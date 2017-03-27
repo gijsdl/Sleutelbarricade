@@ -5,6 +5,8 @@
  */
 package sleutelbarricade;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author chris
@@ -27,12 +29,17 @@ public class spelStart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        bRegels = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        bRegels.setText("Regels");
+        bRegels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegelsActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("jButton2");
 
@@ -41,24 +48,28 @@ public class spelStart extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jButton1)
-                .addGap(83, 83, 83)
+                .addGap(69, 69, 69)
+                .addComponent(bRegels)
+                .addGap(97, 97, 97)
                 .addComponent(jButton2)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(227, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(bRegels)
                     .addComponent(jButton2))
                 .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bRegelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegelsActionPerformed
+        JOptionPane.showMessageDialog(null ,"Hier komen de regels");
+    }//GEN-LAST:event_bRegelsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,7 +107,7 @@ public class spelStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bRegels;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
