@@ -17,22 +17,19 @@ import java.awt.event.ActionListener;
  */
 public class menu {
 
- static JButton restart;
-    private static  JButton stop;
+    static JButton restart;
+    private static JButton stop;
 
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HIGHT = 400;
 
-    
-        
-    
     public static void main(String[] args) {
         JFrame menu = new JFrame();
         menu.setTitle("menu");
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menu.setVisible(true);
-         menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
-          restart = new JButton("reset");
+        menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
+        restart = new JButton("reset");
         stop = new JButton("stop");
         JPanel Panel = new JPanel();
         restart.setBounds(50, 50, 100, 100);
@@ -46,14 +43,10 @@ public class menu {
         ActionListener listener = new menu.ClickListener();
         restart.addActionListener(listener);
         stop.addActionListener(listener);
-       
-   
+
     }
-   
-      
-        
-        
-        public static class ClickListener implements ActionListener {
+
+    public static class ClickListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -66,6 +59,5 @@ public class menu {
         }
 
     }
-
 
 }
