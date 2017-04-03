@@ -22,7 +22,14 @@ public class menu {
         menu.setTitle("menu");
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menu.setVisible(true);
-   
+
+
+        
+        
+        
+
+        
+        
     }
 
 

@@ -43,20 +43,19 @@ public class Menu_fill extends JFrame {
         ActionListener listener = new ClickListener();
         restart.addActionListener(listener);
         stop.addActionListener(listener);
-
+        
     }
-
-    public class ClickListener implements ActionListener {
+public class ClickListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == restart) {
+            if (e.getSource() == restart){
                 System.out.println("restart");
             }
-            if (e.getSource() == stop) {
+            if (e.getSource() == stop){
                 System.out.println("stop");
             }
         }
-
-    }
+    
+}
 }
