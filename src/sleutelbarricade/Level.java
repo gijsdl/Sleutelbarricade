@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
 /**
  *
  * @author Gijs
@@ -19,10 +20,12 @@ public class Level {
 
     private static final int FRAME_WIDTH = 657;
     private static final int FRAME_HIGHT = 683;
+    private static JFrame level = new JFrame();
+    
     
     public static void main(String[] args) {
         
-        JFrame level = new JFrame();
+       
         level.setTitle("level");
         level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -31,21 +34,26 @@ public class Level {
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
-        level.add(background);
-        background.setVisible(true);
+        background.setBounds(0, 0, 640, 640);
         
-        level.setVisible(true);
+        
+        
+        
         generate();
-        
+        level.add(background);
+       level.setLayout(null);
+        level.setVisible(true);
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
-                System.out.printf("%8d", layout[x][y]);
+                System.out.printf("%8d", layout[y][x]);
 
             }
             System.out.println("");
         }
     }
-
+    private static int locationX = 0;
+    private static int locationY = 0;
+            
     private static int[][] layout;
     static Random random = new Random();
 
@@ -63,5 +71,34 @@ public class Level {
             }
 
         }
+         for (int x = 0; x < layout.length; x++) {
+            for (int y = 0; y < layout.length; y++) {
+            if (layout[x][y] == 1){
+                 ImageIcon pic = new ImageIcon("pics/baricade.png");
+                 JLabel block = new JLabel();
+                 block.setIcon(pic);
+                 block.setBounds(locationX, locationY, 64, 64);
+                 level.add(block);
+                 
+                 
+            }else if (layout[x][y] == 2){
+                 ImageIcon pic = new ImageIcon("pics/slot.png");
+                 JLabel block = new JLabel();
+                 block.setIcon(pic);
+                 block.setBounds(locationX, locationY, 64, 64);
+                 level.add(block);
+                
+            }else if (layout[x][y] == 3){
+                 ImageIcon pic = new ImageIcon("pics/eind.png");
+                 JLabel block = new JLabel();
+                 block.setIcon(pic);
+                 block.setBounds(locationX, locationY, 64, 64);
+                 level.add(block);
+            }
+            locationY = locationY + 64;
+            }
+            locationX = locationX +64;
+            locationY = 0;
     }
+}
 }
