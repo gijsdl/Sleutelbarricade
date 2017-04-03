@@ -17,23 +17,24 @@ import javax.swing.JLabel;
  */
 public class Level {
 
-    private static final int FRAME_WIDTH = 640;
-    private static final int FRAME_HIGHT = 640;
+    private static final int FRAME_WIDTH = 657;
+    private static final int FRAME_HIGHT = 683;
     
     public static void main(String[] args) {
         
         JFrame level = new JFrame();
         level.setTitle("level");
         level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        level.setVisible(true);
+        
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
-        JLabel background = new JLabel(new ImageIcon("/pics/background.png"));
-        background.setSize(640, 640);
-        level.setLayout(null);
+        JLabel background = new JLabel();
+        ImageIcon pic = new ImageIcon("pics/background.png");
+        background.setIcon(pic);
         level.add(background);
+        background.setVisible(true);
         
-        
+        level.setVisible(true);
         generate();
         
         for (int x = 0; x < layout.length; x++) {
