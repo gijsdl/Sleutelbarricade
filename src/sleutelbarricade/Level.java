@@ -17,8 +17,8 @@ import javax.swing.JLabel;
  */
 public class Level {
 
-    private static final int FRAME_WIDTH = 657;
-    private static final int FRAME_HIGHT = 683;
+    private static final int FRAME_WIDTH = 656;
+    private static final int FRAME_HIGHT = 679;
     
     public static void main(String[] args) {
         
