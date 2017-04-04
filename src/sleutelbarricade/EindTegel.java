@@ -9,6 +9,6 @@ package sleutelbarricade;
  *
  * @author Gijs
  */
-public class EindTegel {
+public class EindTegel extends Tegel {
     
 }
