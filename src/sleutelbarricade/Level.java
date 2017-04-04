@@ -136,7 +136,7 @@ public class Level {
     }
 
     
-        public static void Levels(String[] args) {
+        public static void Levels() {
        int x = 10;
         int y = 10;
         int[][] level1 = {
