@@ -20,16 +20,10 @@ import javax.swing.JLabel;
  */
 public class Level {
 
-
-
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
 
-
     private static JFrame level = new JFrame();
-    
-
-    
 
     public static void main(String[] args) {
 
@@ -66,21 +60,20 @@ public class Level {
 
     private static int[][] layout;
     static Random random = new Random();
+    private static int win = 0;
 
     public static void generate() {
-        layout = new int[10][10];
-        for (int x = 0; x < layout.length; x++) {
-            for (int y = 0; y < layout.length; y++) {
-                if (x == 0 && y == 0) {
-                    layout[0][0] = 5;
-                } else if (y == 9 && x == 9) {
-                    layout[9][9] = 4;
-                } else {
-                    layout[x][y] = random.nextInt(4);
-                }
-            }
-
+        if(win == 0){
+           layout = level1;
+        }else if (win == 1){
+            layout = level2;
+        }else if (win == 2){
+            layout = level3;
         }
+        
+        
+        
+        
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
                 if (layout[x][y] == 1) {
@@ -115,7 +108,7 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                    Tegel block1 = new Tegel(x,y,layout[x][y]);
+                    Tegel block1 = new Tegel(x, y, layout[x][y]);
                 }
                 locationY = locationY + 64;
             }
@@ -135,57 +128,43 @@ public class Level {
 
     }
 
-    
-        public static void Levels() {
-       int x = 10;
-        int y = 10;
-        int[][] level1 = {
-            {5, 1, 2 ,0 ,0 , 0, 0, 2, 2, 2 },
-            {0, 0, 0 ,0 ,3 , 3, 0, 2, 2, 2 },
-            {0, 0, 2 ,0 ,0 , 0, 0, 2, 2, 3 },
-            {0, 1, 2 ,0 ,0 , 0, 0, 2, 2, 2 },
-            {0, 1, 2 ,2 ,1 , 1, 1, 2, 2, 2 },
-            {0, 0, 2 ,0 ,0 , 0, 1, 2, 2, 0 },
-            {0, 1, 2 ,1 ,1 , 2, 1, 1, 0, 0 },
-            {0, 1, 2 ,2 ,2 , 2, 0, 0, 0, 0 },
-            {3, 1, 2 ,2 ,0 , 0, 0, 1, 0, 0 },
-            {0, 1, 2 ,2 ,0 , 0, 0, 1, 0, 4 }
-        };
-        
-        int[][] level2 = {
-            {5, 1, 1 ,1 , 0, 0, 3, 1, 1, 3 },
-            {0, 1, 1 ,1 , 0, 0, 1, 1, 1, 0 },
-            {0, 0, 0 ,1 , 0, 2, 1, 0, 0, 0 },
-            {0, 0, 0 ,2 , 0, 0, 1, 0, 0, 0 },
-            {0, 0, 0 ,1 , 2, 2, 2, 0, 0, 0 },
-            {0, 0, 0 ,0 , 0, 0, 1, 0, 0, 0 },
-            {0, 0, 0 ,1 , 0, 2, 0, 0, 0, 0 },
-            {3, 0, 0 ,0 , 2, 2, 1, 1, 1, 1 },   
-            {0, 0, 0 ,0 , 0, 2, 0, 0, 0, 0 },
-            {0, 0, 0 ,0 , 1, 1, 0, 0, 0, 4 }
-        };
-        
-                int[][] level3 = {
-            {5, 0, 3 ,1 , 0, 0, 0, 0, 0, 0 },
-            {0, 0, 0 ,1 , 1, 1, 2, 1, 0, 0 },
-            {0, 0, 0 ,0 , 0, 0, 3, 1, 0, 0 },
-            {0, 0, 0 ,1 , 1, 1, 1, 1, 0, 0 },
-            {1, 1, 2 ,0 , 0, 0, 3, 2, 2, 2 },
-            {3, 2, 0 ,0 , 0, 0, 2, 2, 0, 1 },
-            {1, 1, 1 ,1 , 0, 2, 2, 0, 0, 0 },
-            {1, 1, 1 ,0 , 0, 0, 0, 1, 2, 2 },   
-            {1, 0, 0 ,0 , 0, 2, 2, 1, 0, 0 },
-            {1, 3, 0 ,0 , 0, 0, 0, 1, 0, 4 }
-        };
-        
-        
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                System.out.printf("%8d", level1[i][j]);
-            }
-            System.out.println();
-        }
-    
-   
-     }
+    private static int[][] level1 = {
+        {5, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 0, 0, 0, 3, 3, 0, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 0, 2, 2, 3},
+        {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 1, 2, 2, 1, 1, 1, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 1, 2, 2, 0},
+        {0, 1, 2, 1, 1, 2, 1, 1, 0, 0},
+        {0, 1, 2, 2, 2, 2, 0, 0, 0, 0},
+        {3, 1, 2, 2, 0, 0, 0, 1, 0, 0},
+        {0, 1, 2, 2, 0, 0, 0, 1, 0, 4}
+    };
+
+    private static int[][] level2 = {
+        {5, 1, 1, 1, 0, 0, 3, 1, 1, 3},
+        {0, 1, 1, 1, 0, 0, 1, 1, 1, 0},
+        {0, 0, 0, 1, 0, 2, 1, 0, 0, 0},
+        {0, 0, 0, 2, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 2, 2, 2, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+        {3, 0, 0, 0, 2, 2, 1, 1, 1, 1},
+        {0, 0, 0, 0, 0, 2, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 1, 0, 0, 0, 4}
+    };
+
+    private static int[][] level3 = {
+        {5, 0, 3, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 1, 1, 2, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 3, 1, 0, 0},
+        {0, 0, 0, 1, 1, 1, 1, 1, 0, 0},
+        {1, 1, 2, 0, 0, 0, 3, 2, 2, 2},
+        {3, 2, 0, 0, 0, 0, 2, 2, 0, 1},
+        {1, 1, 1, 1, 0, 2, 2, 0, 0, 0},
+        {1, 1, 1, 0, 0, 0, 0, 1, 2, 2},
+        {1, 0, 0, 0, 0, 2, 2, 1, 0, 0},
+        {1, 3, 0, 0, 0, 0, 0, 1, 0, 4}
+    };
+
 }
