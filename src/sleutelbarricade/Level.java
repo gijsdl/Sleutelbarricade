@@ -23,7 +23,7 @@ public class Level {
 
 
     private static final int FRAME_WIDTH = 656;
-    private static final int FRAME_HIGHT = 679;
+    private static final int FRAME_HIGHT = 730;
 
 
     private static JFrame level = new JFrame();
