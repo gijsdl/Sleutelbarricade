@@ -10,5 +10,9 @@ package sleutelbarricade;
  * @author Gijs
  */
 public class Sleutel_tegel extends Tegel {
-    
+
+    public Sleutel_tegel(int locationX, int locationY, int value, int pincode, boolean status) {
+        super(locationX, locationY, value);
+    }
+   
 }

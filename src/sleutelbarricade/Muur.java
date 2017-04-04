@@ -7,11 +7,11 @@ package sleutelbarricade;
 
 /**
  *
- * @author Gijs
+ * @author gijsdl
  */
-public class Box extends Tegel {
+public class Muur extends Tegel {
     
-    public Box(int locationX, int locationY, int value) {
+    public Muur(int locationX, int locationY, int value) {
         super(locationX, locationY, value);
     }
     

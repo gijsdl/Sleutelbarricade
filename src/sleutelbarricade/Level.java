@@ -115,6 +115,7 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    Tegel block1 = new Tegel(x,y,layout[x][y]);
                 }
                 locationY = locationY + 64;
             }
