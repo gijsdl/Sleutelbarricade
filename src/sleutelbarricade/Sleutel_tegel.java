@@ -39,9 +39,12 @@ public class Sleutel_tegel extends Tegel {
         sleutelBase[sleutelNummer][3] = status;
 
     }
+
      public static void reset() {
         int[][] reset = new int[5][4];
+
+
+ 
         sleutelBase = reset;
     }
-   
 }

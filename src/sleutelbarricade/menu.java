@@ -29,15 +29,6 @@ public class menu {
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menu.setVisible(true);
 
-
-
-        
-        
-        
-
-        
-        
-
         menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
         restart = new JButton("reset");
         stop = new JButton("stop");

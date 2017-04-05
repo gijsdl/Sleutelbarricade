@@ -10,6 +10,7 @@ package sleutelbarricade;
  * @author Gijs
  */
 public class Barricade extends Tegel {
+
     private static int locationX;
     private static int locationY;
 
@@ -25,6 +26,7 @@ public class Barricade extends Tegel {
         this.pincode = pincode;
         this.status = status;
         this.barricadeNummer = barricadeNummer;
+
     }
     private static int[][] barricadeBase = new int[34][4];
 
@@ -41,6 +43,7 @@ public class Barricade extends Tegel {
         int[][] reset = new int[34][4];
         barricadeBase = reset;
     }
+
     
-    
+
 }
