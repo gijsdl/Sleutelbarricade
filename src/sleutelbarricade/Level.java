@@ -35,7 +35,7 @@ public class Level {
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
-        background.setBounds(0, 0, 640, 640);
+        background.setBounds(60, 60, 640, 640);
 
         JButton menu = new JButton("menu");
         menu.setBounds(10, 650, 100, 30);
@@ -64,6 +64,8 @@ public class Level {
     private static int sleutelNummer = 0;
 
     private static int barricadeNummer = 0;
+    static ImageIcon player = new ImageIcon("pics/poppetje.png");
+    static JLabel poppetje = new JLabel();
 
     public static void generate() {
         if (win == 0) {
@@ -78,12 +80,10 @@ public class Level {
             Sleutel_tegel.reset();
         }
 
-        ImageIcon player = new ImageIcon("pics/poppetje.png");
-                    JLabel poppetje = new JLabel();
-                    poppetje.setIcon(player);
-                    poppetje.setBounds(0, 0, 64, 64);
-                    level.add(poppetje);
-                    
+        poppetje.setIcon(player);
+        poppetje.setBounds(0, 0, 64, 64);
+        level.add(poppetje);
+
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
                 if (layout[x][y] == 1) {
@@ -130,6 +130,8 @@ public class Level {
             locationX = locationX + 64;
             locationY = 0;
         }
+        String[] args = null;
+        Poppetje.main(args);
     }
 
     private static class ClickListener implements ActionListener {
@@ -169,7 +171,7 @@ public class Level {
         {0, 0, 0, 0, 1, 1, 0, 0, 0, 3}
     };
 
-private static int[][] level3 = {
+    private static int[][] level3 = {
         {0, 0, 4, 1, 1, 0, 0, 0, 0, 0},
         {0, 0, 0, 1, 5, 1, 9, 1, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
@@ -181,5 +183,15 @@ private static int[][] level3 = {
         {1, 1, 0, 0, 0, 2, 2, 1, 0, 0},
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
+
+    public static void bewegen(int x, int y) {
+        x = x * 64;
+        y = y * 64;
+        poppetje.setIcon(player);
+        poppetje.setBounds(x, y, 64, 64);
+        level.add(poppetje);
+        
+
+    }
 
 }

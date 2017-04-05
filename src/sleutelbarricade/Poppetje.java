@@ -28,7 +28,7 @@ public class Poppetje extends JFrame implements KeyListener {
     private BufferedImage gast;
     //start coördinaten poppetje
     private int cordX = 0;
-    private int cordY = 45;
+    private int cordY = 0;
  
     public Poppetje() {
         setTitle("Sleutelbaricade");
@@ -71,22 +71,26 @@ public class Poppetje extends JFrame implements KeyListener {
         switch (ke.getKeyCode()) {
             //een tegel (64 pixels) naar rechts met pijltje naar rechts
             case KeyEvent.VK_RIGHT: {
-                cordX+=64;
+                cordX+=1;
+                Level.bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) naar links met pijltje naar links
             case KeyEvent.VK_LEFT: {
-                cordX-=64;
+                cordX-=1;
+                Level.bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) omlaag met het pijltje omlaag
             case KeyEvent.VK_DOWN: {
-                cordY+=64;
+                cordY+=1;
+                Level.bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) omhoog met het pijltje omhoog
             case KeyEvent.VK_UP: {
-                cordY-=64;
+                cordY-=1;
+                Level.bewegen(cordX, cordY);
             }
             break;
         }
