@@ -10,7 +10,6 @@ package sleutelbarricade;
  * @author Gijs
  */
 public class Sleutel_tegel extends Tegel {
-
     private static int locationX;
     private static int locationY;
 
@@ -41,8 +40,11 @@ public class Sleutel_tegel extends Tegel {
 
     }
 
-    public static void reset() {
-        int[][] reset = new int[34][4];
+     public static void reset() {
+        int[][] reset = new int[5][4];
+
+
+ 
         sleutelBase = reset;
     }
 }

@@ -13,14 +13,16 @@ public class Barricade extends Tegel {
 
     private static int locationX;
     private static int locationY;
+
     private static int pincode;
     private static int status;
     private static int barricadeNummer;
-
+    
     public Barricade(int locationX, int locationY, int pincode, int status, int barricadeNummer) {
         super(locationX, locationY);
-        this.locationX = locationX;
+         this.locationX = locationX;
         this.locationY = locationY;
+
         this.pincode = pincode;
         this.status = status;
         this.barricadeNummer = barricadeNummer;
@@ -33,7 +35,7 @@ public class Barricade extends Tegel {
         barricadeBase[barricadeNummer][1] = locationY;
         barricadeBase[barricadeNummer][2] = pincode;
         barricadeBase[barricadeNummer][3] = status;
-        barricadeBase[barricadeNummer][4] = barricadeNummer;
+        
 
     }
     
@@ -41,5 +43,7 @@ public class Barricade extends Tegel {
         int[][] reset = new int[34][4];
         barricadeBase = reset;
     }
+
+    
 
 }

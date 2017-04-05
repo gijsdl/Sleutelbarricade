@@ -11,7 +11,8 @@ package sleutelbarricade;
  */
 public class EindTegel extends Tegel {
     
-    public EindTegel(int locationX, int locationY,  int pincode, boolean status) {
+
+    public EindTegel(int locationX, int locationY, int pincode, boolean status) {
         super(locationX, locationY);
     }
     
