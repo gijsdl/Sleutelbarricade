@@ -39,13 +39,6 @@ public class Sleutel_tegel extends Tegel {
         sleutelBase[sleutelNummer][2] = pincode;
         sleutelBase[sleutelNummer][3] = status;
 
-        for (int x = 0; x < 5; x++) {
-            for (int i = 0; i < 4; i++) {
-                System.out.printf("%8d", sleutelBase[x][i]);
-            }
-            System.out.println("");
-        }
-
     }
 
     public static void reset() {
