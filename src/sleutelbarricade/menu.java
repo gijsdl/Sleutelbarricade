@@ -26,7 +26,7 @@ public class menu {
     public static void main(String[] args) {
         JFrame menu = new JFrame();
         menu.setTitle("menu");
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         menu.setVisible(true);
 
         menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
