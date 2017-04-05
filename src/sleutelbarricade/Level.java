@@ -61,6 +61,7 @@ public class Level {
     private static int[][] layout;
     static Random random = new Random();
     private static int win = 0;
+    private static int sleutelNummer = 0;
 
     public static void generate() {
         if(win == 0){
@@ -96,18 +97,20 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    int pincode = 100;
+                    int status = 1;
+                    Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
+                    Sleutel_tegel.store();
+                    sleutelNummer++;
+                    
                 } else if (layout[x][y] == 4) {
                     ImageIcon pic = new ImageIcon("pics/eind.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                } else if (layout[x][y] == 5) {
-                    ImageIcon pic = new ImageIcon("pics/poppetje.png");
-                    JLabel block = new JLabel();
-                    block.setIcon(pic);
-                    block.setBounds(locationX, locationY, 64, 64);
-                    level.add(block);
+                    
+                
                     
                 }
                 locationY = locationY + 64;
