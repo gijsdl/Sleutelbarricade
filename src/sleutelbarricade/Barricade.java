@@ -35,7 +35,7 @@ public class Barricade extends Tegel {
         barricadeBase[barricadeNummer][1] = locationY;
         barricadeBase[barricadeNummer][2] = pincode;
         barricadeBase[barricadeNummer][3] = status;
-        barricadeBase[barricadeNummer][4] = barricadeNummer;
+        
 
     }
     
