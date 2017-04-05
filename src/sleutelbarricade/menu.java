@@ -28,6 +28,7 @@ public class menu {
         menu.setTitle("menu");
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menu.setVisible(true);
+
         menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
         restart = new JButton("reset");
         stop = new JButton("stop");
@@ -43,6 +44,7 @@ public class menu {
         ActionListener listener = new menu.ClickListener();
         restart.addActionListener(listener);
         stop.addActionListener(listener);
+
 
     }
 

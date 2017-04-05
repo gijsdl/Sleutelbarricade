@@ -20,8 +20,9 @@ import javax.swing.JLabel;
  */
 public class Level {
 
-    private static final int FRAME_WIDTH = 657;
+    private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
+
     private static JFrame level = new JFrame();
 
     public static void main(String[] args) {
@@ -59,21 +60,24 @@ public class Level {
 
     private static int[][] layout;
     static Random random = new Random();
+    private static int win = 0;
+
+    private static int sleutelNummer = 0;
+    private static int barricadeNummer = 0;
 
     public static void generate() {
-        layout = new int[10][10];
-        for (int x = 0; x < layout.length; x++) {
-            for (int y = 0; y < layout.length; y++) {
-                if (x == 0 && y == 0) {
-                    layout[0][0] = 5;
-                } else if (y == 9 && x == 9) {
-                    layout[9][9] = 4;
-                } else {
-                    layout[x][y] = random.nextInt(4);
-                }
-            }
-
+        if (win == 0) {
+            layout = level1;
+        } else if (win == 1) {
+            layout = level2;
+            Barricade.reset();
+            Sleutel_tegel.reset();
+        } else if (win == 2) {
+            layout = level3;
+            Barricade.reset();
+            Sleutel_tegel.reset();
         }
+
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
                 if (layout[x][y] == 1) {
@@ -82,6 +86,11 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    int pincode = 100;
+                    int status = 1;
+                    Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
+                    Barricade.store();
+                    barricadeNummer++;
 
                 } else if (layout[x][y] == 2) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
@@ -96,18 +105,19 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    int pincode = 100;
+                    int status = 1;
+                    Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
+                    Sleutel_tegel.store();
+                    sleutelNummer++;
+
                 } else if (layout[x][y] == 4) {
                     ImageIcon pic = new ImageIcon("pics/eind.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                } else if (layout[x][y] == 5) {
-                    ImageIcon pic = new ImageIcon("pics/poppetje.png");
-                    JLabel block = new JLabel();
-                    block.setIcon(pic);
-                    block.setBounds(locationX, locationY, 64, 64);
-                    level.add(block);
+
                 }
                 locationY = locationY + 64;
             }
@@ -126,5 +136,57 @@ public class Level {
         }
 
     }
+
+    private static int[][] level1 = {
+        {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+
+        {0, 0, 0, 0, 3, 3, 0, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 0, 2, 2, 3},
+
+        {0, 0, 0, 0, 4, 4, 0, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 0, 2, 2, 4},
+
+        {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 1, 2, 2, 1, 1, 1, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 1, 2, 2, 0},
+        {0, 1, 2, 1, 1, 2, 1, 1, 0, 0},
+        {0, 1, 2, 2, 2, 2, 0, 0, 0, 0},
+        {4, 1, 2, 2, 0, 0, 0, 1, 0, 0},
+        {0, 1, 2, 2, 0, 0, 0, 1, 0, 3}
+    };
+
+    private static int[][] level2 = {
+
+        {0, 1, 1, 1, 0, 0, 3, 1, 1, 3},
+
+        {0, 1, 1, 1, 0, 0, 4, 1, 1, 4},
+
+        {0, 1, 1, 1, 0, 0, 1, 1, 1, 0},
+        {0, 0, 0, 1, 0, 2, 1, 0, 0, 0},
+        {0, 0, 0, 2, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 2, 2, 2, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+        {4, 0, 0, 0, 2, 2, 1, 1, 1, 1},
+        {0, 0, 0, 0, 0, 2, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 1, 0, 0, 0, 3}
+    };
+
+    private static int[][] level3 = {
+
+        {0, 0, 3, 1, 0, 0, 0, 0, 0, 0},
+
+        {0  , 0, 4, 1, 0, 0, 0, 0, 0, 0},
+
+        {0, 0, 0, 1, 1, 1, 2, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 4, 1, 0, 0},
+        {0, 0, 0, 1, 1, 1, 1, 1, 0, 0},
+        {1, 1, 2, 0, 0, 0, 4, 2, 2, 2},
+        {4, 2, 0, 0, 0, 0, 2, 2, 0, 1},
+        {1, 1, 1, 1, 0, 2, 2, 0, 0, 0},
+        {1, 1, 1, 0, 0, 0, 0, 1, 2, 2},
+        {1, 0, 0, 0, 0, 2, 2, 1, 0, 0},
+        {1, 4, 0, 0, 0, 0, 0, 1, 0, 3}
+    };
 
 }

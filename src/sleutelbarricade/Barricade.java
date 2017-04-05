@@ -9,40 +9,37 @@ package sleutelbarricade;
  *
  * @author Gijs
  */
-public class Sleutel_tegel extends Tegel {
+public class Barricade extends Tegel {
 
     private static int locationX;
     private static int locationY;
-
     private static int pincode;
     private static int status;
-    private static int sleutelNummer;
+    private static int barricadeNummer;
 
-    public Sleutel_tegel(int locationX, int locationY, int pincode, int status, int sleutelNummer) {
+    public Barricade(int locationX, int locationY, int pincode, int status, int barricadeNummer) {
         super(locationX, locationY);
         this.locationX = locationX;
         this.locationY = locationY;
-
         this.pincode = pincode;
         this.status = status;
-        this.sleutelNummer = sleutelNummer;
+        this.barricadeNummer = barricadeNummer;
 
     }
-
-    private static int[][] sleutelBase = new int[5][4];
+    private static int[][] barricadeBase = new int[34][4];
 
     public static void store() {
-
-        sleutelBase[sleutelNummer][0] = locationX;
-        sleutelBase[sleutelNummer][1] = locationY;
-
-        sleutelBase[sleutelNummer][2] = pincode;
-        sleutelBase[sleutelNummer][3] = status;
+        barricadeBase[barricadeNummer][0] = locationX;
+        barricadeBase[barricadeNummer][1] = locationY;
+        barricadeBase[barricadeNummer][2] = pincode;
+        barricadeBase[barricadeNummer][3] = status;
+        barricadeBase[barricadeNummer][4] = barricadeNummer;
 
     }
-
+    
     public static void reset() {
         int[][] reset = new int[34][4];
-        sleutelBase = reset;
+        barricadeBase = reset;
     }
+
 }
