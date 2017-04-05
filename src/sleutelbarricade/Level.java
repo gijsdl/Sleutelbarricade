@@ -61,16 +61,21 @@ public class Level {
     private static int[][] layout;
     static Random random = new Random();
     private static int win = 0;
-    
+
     private static int sleutelNummer = 0;
+    private static int barricadeNummer = 0;
 
     public static void generate() {
         if (win == 0) {
             layout = level1;
         } else if (win == 1) {
             layout = level2;
+            Barricade.reset();
+            Sleutel_tegel.reset();
         } else if (win == 2) {
             layout = level3;
+            Barricade.reset();
+            Sleutel_tegel.reset();
         }
 
         for (int x = 0; x < layout.length; x++) {
@@ -81,6 +86,11 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    int pincode = 100;
+                    int status = 1;
+                    Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
+                    Barricade.store();
+                    barricadeNummer++;
 
                 } else if (layout[x][y] == 2) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
@@ -108,13 +118,6 @@ public class Level {
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
 
-                } else if (layout[x][y] == 5) {
-                    ImageIcon pic = new ImageIcon("pics/poppetje.png");
-                    JLabel block = new JLabel();
-                    block.setIcon(pic);
-                    block.setBounds(locationX, locationY, 64, 64);
-                    level.add(block);
-
                 }
                 locationY = locationY + 64;
             }
@@ -135,7 +138,7 @@ public class Level {
     }
 
     private static int[][] level1 = {
-        {5, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
         {0, 0, 0, 0, 3, 3, 0, 2, 2, 2},
         {0, 0, 2, 0, 0, 0, 0, 2, 2, 3},
         {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
@@ -148,7 +151,7 @@ public class Level {
     };
 
     private static int[][] level2 = {
-        {5, 1, 1, 1, 0, 0, 3, 1, 1, 3},
+        {0, 1, 1, 1, 0, 0, 3, 1, 1, 3},
         {0, 1, 1, 1, 0, 0, 1, 1, 1, 0},
         {0, 0, 0, 1, 0, 2, 1, 0, 0, 0},
         {0, 0, 0, 2, 0, 0, 1, 0, 0, 0},
@@ -161,7 +164,7 @@ public class Level {
     };
 
     private static int[][] level3 = {
-        {5, 0, 3, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 3, 1, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 1, 1, 1, 2, 1, 0, 0},
         {0, 0, 0, 0, 0, 0, 3, 1, 0, 0},
         {0, 0, 0, 1, 1, 1, 1, 1, 0, 0},
