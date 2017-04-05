@@ -28,20 +28,22 @@ public class Poppetje extends JFrame implements KeyListener {
     private JLabel poppetje = new JLabel();
 
     public Poppetje() {
-
+        create();
+        
     }
 
     public void create() {
         poppetje.setIcon(player);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
-
         addKeyListener(this);
+
     }
 
     public void bewegen(int x, int y) {
         poppetje.setIcon(player);
         poppetje.setBounds(x * 64, y * 64, 64, 64);
+        add(poppetje);
     }
 
     //While a key is pressed
@@ -50,25 +52,25 @@ public class Poppetje extends JFrame implements KeyListener {
             //een tegel (64 pixels) naar rechts met pijltje naar rechts
             case KeyEvent.VK_RIGHT: {
                 cordX += 1;
-
+                bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) naar links met pijltje naar links
             case KeyEvent.VK_LEFT: {
                 cordX -= 1;
-
+                bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) omlaag met het pijltje omlaag
             case KeyEvent.VK_DOWN: {
                 cordY += 1;
-
+                bewegen(cordX, cordY);
             }
             break;
             //een tegel (64 pixels) omhoog met het pijltje omhoog
             case KeyEvent.VK_UP: {
                 cordY -= 1;
-
+                bewegen(cordX, cordY);
             }
             break;
         }
