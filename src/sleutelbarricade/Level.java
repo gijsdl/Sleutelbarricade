@@ -6,6 +6,7 @@
 package sleutelbarricade;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -35,7 +36,7 @@ public class Level {
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
-        background.setBounds(0, 0, 640, 640);
+        background.setBounds(0,0, 640, 640);
 
         JButton menu = new JButton("menu");
         menu.setBounds(10, 650, 100, 30);

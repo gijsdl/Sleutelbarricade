@@ -36,6 +36,7 @@ public class Poppetje extends JFrame implements KeyListener {
         poppetje.setIcon(player);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
+        setFocusable(true);
         addKeyListener(this);
 
     }
