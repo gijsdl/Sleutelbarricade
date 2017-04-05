@@ -10,5 +10,14 @@ package sleutelbarricade;
  * @author Gijs
  */
 public class Tegel {
+    private int locationX;
+    private int locationY;
+
+    public Tegel(int locationX, int locationY){
+        this.locationX = locationX;
+        this.locationY = locationY;
+        
+        
+    }
     
 }
