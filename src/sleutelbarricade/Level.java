@@ -78,6 +78,12 @@ public class Level {
             Sleutel_tegel.reset();
         }
 
+        ImageIcon player = new ImageIcon("pics/poppetje.png");
+                    JLabel poppetje = new JLabel();
+                    poppetje.setIcon(player);
+                    poppetje.setBounds(0, 0, 64, 64);
+                    level.add(poppetje);
+                    
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
                 if (layout[x][y] == 1) {
