@@ -26,6 +26,21 @@ public class Barricade extends Tegel {
         this.status = status;
         this.barricadeNummer = barricadeNummer;
     }
+    private static int[][] barricadeBase = new int[34][4];
+
+    public static void store() {
+        barricadeBase[barricadeNummer][0] = locationX;
+        barricadeBase[barricadeNummer][1] = locationY;
+        barricadeBase[barricadeNummer][2] = pincode;
+        barricadeBase[barricadeNummer][3] = status;
+        barricadeBase[barricadeNummer][4] = barricadeNummer;
+
+    }
+    
+    public static void reset() {
+        int[][] reset = new int[34][4];
+        barricadeBase = reset;
+    }
     
     
 }
