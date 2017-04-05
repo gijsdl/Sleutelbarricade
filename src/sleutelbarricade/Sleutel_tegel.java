@@ -11,8 +11,43 @@ package sleutelbarricade;
  */
 public class Sleutel_tegel extends Tegel {
 
-    public Sleutel_tegel(int locationX, int locationY, int value, int pincode, boolean status) {
-        super(locationX, locationY, value);
+    private static int locationX;
+    private static int locationY;
+    
+    private static int pincode;
+    private static int status;
+    private static int sleutelNummer;
+
+    public Sleutel_tegel(int locationX, int locationY, int pincode, int status, int sleutelNummer) {
+        super(locationX, locationY);
+        this.locationX = locationX;
+        this.locationY = locationY;
+        
+        this.pincode = pincode;
+        this.status = status;
+        this.sleutelNummer = sleutelNummer;
+        
+
     }
-   
+    
+    private static int[][] sleutelBase = new int[5][4];
+
+    public static void store() {
+        
+        sleutelBase[sleutelNummer][0] = locationX;
+        sleutelBase[sleutelNummer][1] = locationY;
+        
+        sleutelBase[sleutelNummer][2] = pincode;
+        sleutelBase[sleutelNummer][3] = status;
+
+        for (int x = 0; x < sleutelBase.length; x++) {
+            for (int i = 0; i < sleutelBase.length; i++) {
+                System.out.printf("%8d", sleutelBase[x][i]);
+            }
+            System.out.println("");
+        }
+        
+
+    }
+
 }

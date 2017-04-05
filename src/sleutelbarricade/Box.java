@@ -11,8 +11,8 @@ package sleutelbarricade;
  */
 public class Box extends Tegel {
     
-    public Box(int locationX, int locationY, int value) {
-        super(locationX, locationY, value);
+    public Box(int locationX, int locationY) {
+        super(locationX, locationY);
     }
     
 }

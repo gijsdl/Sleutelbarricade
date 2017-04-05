@@ -11,8 +11,8 @@ package sleutelbarricade;
  */
 public class Muur extends Tegel {
     
-    public Muur(int locationX, int locationY, int value) {
-        super(locationX, locationY, value);
+    public Muur(int locationX, int locationY) {
+        super(locationX, locationY);
     }
     
 }

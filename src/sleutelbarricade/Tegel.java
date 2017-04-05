@@ -12,12 +12,12 @@ package sleutelbarricade;
 public class Tegel {
     private int locationX;
     private int locationY;
-    private int value;
+   
     
-    public Tegel(int locationX, int locationY, int value){
+    public Tegel(int locationX, int locationY){
         this.locationX = locationX;
         this.locationY = locationY;
-        this.value = value;
+        
         
     }
     
