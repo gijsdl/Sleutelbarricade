@@ -6,8 +6,11 @@
 package sleutelbarricade;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -17,51 +20,151 @@ import javax.swing.JLabel;
  */
 public class Level {
 
-    private static final int FRAME_WIDTH = 657;
-    private static final int FRAME_HIGHT = 683;
-    
+    private static final int FRAME_WIDTH = 656;
+    private static final int FRAME_HIGHT = 730;
+
+    private static JFrame level = new JFrame();
+
     public static void main(String[] args) {
-        
-        JFrame level = new JFrame();
+
         level.setTitle("level");
         level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
+
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
-        level.add(background);
-        background.setVisible(true);
-        
-        level.setVisible(true);
+        background.setBounds(0, 0, 640, 640);
+
+        JButton menu = new JButton("menu");
+        menu.setBounds(10, 650, 100, 30);
+        ActionListener listener = new Level.ClickListener();
+        menu.addActionListener(listener);
+
         generate();
-        
+        level.add(background);
+        level.add(menu);
+        level.setLayout(null);
+        level.setVisible(true);
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
-                System.out.printf("%8d", layout[x][y]);
+                System.out.printf("%8d", layout[y][x]);
 
             }
             System.out.println("");
         }
     }
+    private static int locationX = 0;
+    private static int locationY = 0;
 
     private static int[][] layout;
     static Random random = new Random();
+    private static int win = 0;
 
     public static void generate() {
-        layout = new int[10][10];
+        if(win == 0){
+           layout = level1;
+        }else if (win == 1){
+            layout = level2;
+        }else if (win == 2){
+            layout = level3;
+        }
+        
+        
+        
+        
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
-                if (x == 0 && y == 0) {
-                    layout[0][0] = 0;
-                } else if (y == 9 && x == 9) {
-                    layout[9][9] = 3;
-                } else {
-                    layout[x][y] = random.nextInt(3);
-                }
-            }
+                if (layout[x][y] == 1) {
+                    ImageIcon pic = new ImageIcon("pics/baricade.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
 
+                } else if (layout[x][y] == 2) {
+                    ImageIcon pic = new ImageIcon("pics/slot.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+
+                } else if (layout[x][y] == 3) {
+                    ImageIcon pic = new ImageIcon("pics/sleutel.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+                } else if (layout[x][y] == 4) {
+                    ImageIcon pic = new ImageIcon("pics/eind.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+                } else if (layout[x][y] == 5) {
+                    ImageIcon pic = new ImageIcon("pics/poppetje.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+                    Tegel block1 = new Tegel(x, y, layout[x][y]);
+                }
+                locationY = locationY + 64;
+            }
+            locationX = locationX + 64;
+            locationY = 0;
         }
     }
+
+    private static class ClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String[] args = null;
+            menu.main(args);
+
+        }
+
+    }
+
+    private static int[][] level1 = {
+        {5, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 0, 0, 0, 3, 3, 0, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 0, 2, 2, 3},
+        {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
+        {0, 1, 2, 2, 1, 1, 1, 2, 2, 2},
+        {0, 0, 2, 0, 0, 0, 1, 2, 2, 0},
+        {0, 1, 2, 1, 1, 2, 1, 1, 0, 0},
+        {0, 1, 2, 2, 2, 2, 0, 0, 0, 0},
+        {3, 1, 2, 2, 0, 0, 0, 1, 0, 0},
+        {0, 1, 2, 2, 0, 0, 0, 1, 0, 4}
+    };
+
+    private static int[][] level2 = {
+        {5, 1, 1, 1, 0, 0, 3, 1, 1, 3},
+        {0, 1, 1, 1, 0, 0, 1, 1, 1, 0},
+        {0, 0, 0, 1, 0, 2, 1, 0, 0, 0},
+        {0, 0, 0, 2, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 2, 2, 2, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+        {3, 0, 0, 0, 2, 2, 1, 1, 1, 1},
+        {0, 0, 0, 0, 0, 2, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 1, 0, 0, 0, 4}
+    };
+
+    private static int[][] level3 = {
+        {5, 0, 3, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 1, 1, 2, 1, 0, 0},
+        {0, 0, 0, 0, 0, 0, 3, 1, 0, 0},
+        {0, 0, 0, 1, 1, 1, 1, 1, 0, 0},
+        {1, 1, 2, 0, 0, 0, 3, 2, 2, 2},
+        {3, 2, 0, 0, 0, 0, 2, 2, 0, 1},
+        {1, 1, 1, 1, 0, 2, 2, 0, 0, 0},
+        {1, 1, 1, 0, 0, 0, 0, 1, 2, 2},
+        {1, 0, 0, 0, 0, 2, 2, 1, 0, 0},
+        {1, 3, 0, 0, 0, 0, 0, 1, 0, 4}
+    };
+
 }

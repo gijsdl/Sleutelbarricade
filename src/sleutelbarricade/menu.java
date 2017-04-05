@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  */
 public class menu {
 
-    static JButton restart;
+    private static JButton restart;
     private static JButton stop;
 
     private static final int FRAME_WIDTH = 300;
@@ -57,7 +57,11 @@ public class menu {
 >>>>>>> origin/master
     }
 
-    public static class ClickListener implements ActionListener {
+    void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static class ClickListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
