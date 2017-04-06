@@ -19,25 +19,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static sleutelbarricade.Poppetje.cordX;
+import static sleutelbarricade.Poppetje.cordY;
+
+
 
 public class Poppetje extends JFrame implements KeyListener {
     //Objecten voor plaatjes
 
-    private BufferedImage background;
     private BufferedImage gast;
     //start coördinaten poppetje
     private UUID uuid;
-    private int cordX = 0;
-    private int cordY = 0;
+    public static int cordX = 0;
+    public static int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
     private int sleutel;
-    private ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
-    private ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
-    private ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
-    private ImageIcon player3 = new ImageIcon("pics/poppetje3.png"); //Het plaatje waarop het poppetje naar links kijkt.
-    private JLabel poppetje = new JLabel();
+    public static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
+    public static ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
+    public static ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
+    public static ImageIcon player3 = new ImageIcon("pics/poppetje3.png"); //Het plaatje waarop het poppetje naar links kijkt.
+    public static JLabel poppetje = new JLabel();
     int win = 0;
+
+        
 
     public Poppetje() {
         this.uuid = UUID.randomUUID();

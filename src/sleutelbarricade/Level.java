@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import static sleutelbarricade.Poppetje.cordX;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,10 +46,12 @@ public class Level {
     private static int[][] layout;
     static Random random = new Random();
     private static int sleutelNummer = 0;
-
+    public static int currentlevel = 0;
     private static int barricadeNummer = 0;
 
     public static void generate(int win) {
+        currentlevel = win;
+        Poppetje.poppetje.setIcon(Poppetje.player);
         if (win == 0) {
             layout = level1;
             Barricade.reset();
@@ -275,8 +278,9 @@ public class Level {
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
         ActionListener listener = new Level.ClickListener();
+        ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
-        restart.addActionListener(listener);
+        restart.addActionListener(listener2);
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
@@ -305,7 +309,16 @@ public class Level {
         }
 
     }
+        private static class ClickListener2 implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            generate(currentlevel);
+            
+            
+        }
+
+    }
     private static int[][] level1 = {
         {0, 1, 8, 0, 0, 0, 0, 2, 2, 2},
         {0, 0, 0, 0, 4, 6, 0, 2, 2, 2},
