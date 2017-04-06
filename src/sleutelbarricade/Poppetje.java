@@ -39,6 +39,10 @@ public class Poppetje extends JFrame implements KeyListener {
         create();
 
     }
+    public Poppetje(int sleutel){
+        this.sleutel = sleutel;
+        System.out.println(sleutel);
+    }
 
     public void create() {
         System.out.println("test");
