@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ import javax.swing.JLabel;
  * @author Gijs
  */
 public class Level {
+    
 
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
@@ -344,7 +346,7 @@ public class Level {
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
 
-    public static boolean check(int x, int y, int sleutel) {
+    public static boolean check(int x, int y, UUID uuid, int sleutel) {
         boolean check = false;
         if (x > 9 || y > 9 || x < 0 || y < 0) {
             check = false;
@@ -357,7 +359,7 @@ public class Level {
         } else if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
             check = true;
 
-            Sleutel_tegel.sleutelcheck(x, y);
+            Sleutel_tegel.sleutelcheck(x, y, uuid);
 
         } else if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
             System.out.println(x + " " + y + " " + sleutel + " " +  "test");
