@@ -271,9 +271,11 @@ public class Level {
         }
         JButton menu = new JButton("menu");
         menu.setBounds(10, 650, 100, 30);
+        JButton restart = new JButton("reset");
+        restart.setBounds(120, 650, 100, 30);
         ActionListener listener = new Level.ClickListener();
         menu.addActionListener(listener);
-
+        restart.addActionListener(listener);
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
@@ -282,6 +284,7 @@ public class Level {
 
         level.setLayout(null);
         level.add(menu);
+        level.add(restart);
         level.setVisible(true);
         System.out.println("test2");
         level.repaint();
@@ -295,9 +298,9 @@ public class Level {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String[] args = null;
-            menu.main(args);
-
+               Level.level.setVisible(false);
+               spelStart s = new spelStart();
+               s.setVisible(true);
         }
 
     }
