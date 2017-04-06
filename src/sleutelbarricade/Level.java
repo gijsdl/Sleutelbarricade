@@ -33,63 +33,82 @@ public class Level {
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
         level.getContentPane().setBackground(new Color(65, 116, 14));
-        JLabel background = new JLabel();
-        ImageIcon pic = new ImageIcon("pics/background.png");
-        background.setIcon(pic);
-        background.setBounds(0,0, 640, 640);
+        
 
-        JButton menu = new JButton("menu");
-        menu.setBounds(10, 650, 100, 30);
-        ActionListener listener = new Level.ClickListener();
-        menu.addActionListener(listener);
+     
+        
 
-        generate();
-        level.add(background);
-        level.add(menu);
-        level.setLayout(null);
-        level.setVisible(true);
-        for (int x = 0; x < layout.length; x++) {
-            for (int y = 0; y < layout.length; y++) {
-                System.out.printf("%8d", layout[y][x]);
 
-            }
-            System.out.println("");
-        }
+        generate(0);
+       
+
     }
     private static int locationX = 0;
     private static int locationY = 0;
 
     private static int[][] layout;
     static Random random = new Random();
-    private static int win = 2;
     private static int sleutelNummer = 0;
 
     private static int barricadeNummer = 0;
     
 
-    public static void generate() {
+    public static void generate(int win) {
         if (win == 0) {
             layout = level1;
-        } else if (win == 1) {
-            layout = level2;
             Barricade.reset();
             Sleutel_tegel.reset();
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            level.getContentPane().removeAll();
+            locationX = 0;
+            locationY = 0;
+        } else if (win == 1) {
+            layout = level2;
+            
+            Barricade.reset();
+            Sleutel_tegel.reset();
+            level.getContentPane().removeAll();
+            level.setVisible(false);
+            locationX = 0;
+            locationY = 0;
+            
+            
+            
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            System.out.println("test");
         } else if (win == 2) {
             layout = level3;
             Barricade.reset();
             Sleutel_tegel.reset();
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            level.getContentPane().removeAll();
+            locationX = 0;
+            locationY = 0;
         }
 
         
 
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
+                if (layout[x][y] == 0){
+                    
+                     ImageIcon pic = new ImageIcon("pics/niks.png");
+                    JLabel block = new JLabel();
+                    
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+                }
                 if (layout[x][y] == 1) {
                     ImageIcon pic = new ImageIcon("pics/muur.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    
                     
                     
 
@@ -266,7 +285,22 @@ public class Level {
             locationX = locationX + 64;
             locationY = 0;
         }
+         JButton menu = new JButton("menu");
+        menu.setBounds(10, 650, 100, 30);
+        ActionListener listener = new Level.ClickListener();
+        menu.addActionListener(listener);
         
+        JLabel background = new JLabel();
+        ImageIcon pic = new ImageIcon("pics/background.png");
+        background.setIcon(pic);
+        background.setBounds(0,0, 640, 640);
+        level.add(background);
+        
+        level.setLayout(null);
+        level.add(menu);
+        level.setVisible(true);
+        System.out.println("test2");
+        level.repaint();
     }
 
     void setVisible(boolean b) {
@@ -323,9 +357,9 @@ public class Level {
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
 
-   public static boolean check(int x, int y){
+   public static boolean check(int x, int y, int sleutel){
        boolean check = false;
-       if (x > 10 || y > 10 || x < 0 || y < 0 ){
+       if (x > 9 || y > 9 || x < 0 || y < 0 ){
            check = false;
        }
        else if (layout[x][y] == 0){
@@ -336,6 +370,7 @@ public class Level {
            check = true;
        }else if(layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7 ){
            check = true;
+           Sleutel_tegel.sleutelcheck(x,y);
            
        }else if(layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10|| layout[x][y] == 11 ){
            check = false;
