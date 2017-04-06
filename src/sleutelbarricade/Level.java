@@ -15,7 +15,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import static sleutelbarricade.Poppetje.cordX;
 import javax.swing.JOptionPane;
 
 /**
@@ -314,6 +313,8 @@ public class Level {
         @Override
         public void actionPerformed(ActionEvent e) {
             generate(currentlevel);
+            Poppetje.cordX = 0;
+            Poppetje.cordY = 0;
             
             
         }
@@ -639,8 +640,9 @@ public class Level {
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
         ActionListener listener = new Level.ClickListener();
+        ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
-        restart.addActionListener(listener);
+        restart.addActionListener(listener2);
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
