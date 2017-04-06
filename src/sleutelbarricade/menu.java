@@ -61,7 +61,7 @@ public class menu {
                 System.out.println("restart");
             }
             if (e.getSource() == stop) {
-               Level.level.dispose();
+               Level.level.setVisible(false);
                menu.setVisible(false);
                spelStart s = new spelStart();
                s.setVisible(true);
