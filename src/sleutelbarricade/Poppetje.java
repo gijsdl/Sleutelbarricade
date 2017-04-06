@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Poppetje extends JFrame implements KeyListener {
     //Objectne voor plaatjes
@@ -45,6 +46,7 @@ public class Poppetje extends JFrame implements KeyListener {
 
     public void bewegen(int x, int y) {
        boolean check = Level.check(x , y);
+        System.out.println(x + " " + y);
        if (check == true){
            poppetje.setIcon(player);
         poppetje.setBounds(x * 64, y * 64, 64, 64);
@@ -56,6 +58,10 @@ public class Poppetje extends JFrame implements KeyListener {
        }else{
            cordX = oldCordX;
            cordY = oldCordY;
+       }
+       if ( x == 9 && y == 9){
+           
+           JOptionPane.showMessageDialog(this, "U heeft dit level gewonnen!");
        }
         
     }
