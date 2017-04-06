@@ -67,9 +67,9 @@ public class Poppetje extends JFrame implements KeyListener {
     }
 
     public void bewegen(int x, int y) {
-        System.out.println(sleutel);
-        boolean check = Level.check(x, y, getUuid(), sleutel);
-        System.out.println(x + " " + y);
+       
+        boolean check = Level.check(x, y, getUuid(), sleutel, win);
+        
         if (check == true) {
             poppetje.setIcon(player);
             poppetje.setBounds(x * 64, y * 64, 64, 64);
