@@ -595,7 +595,7 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
+                        code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
