@@ -19,26 +19,27 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Gijs
+ * @author Chris Bruijn, Ruben Bijck, Gijs de Lange
  */
 public class Level {
-
+// lengte en breedte van de JFrame initialiseren en een Jlabel aanmaken voor het poppetje.
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
 
     public static JFrame level = new Poppetje();
 
     public static void main(String[] args) {
-
-        level.setTitle("level");
+//De rest van de waarden voor level instellen.
+        level.setTitle("Sleutel Barricade");
         level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
         level.getContentPane().setBackground(new Color(65, 116, 14));
-
+// generate starten
         generate(0);
 
     }
+    //Intialiseren van de waarden die nodig zijn.
     private static int locationX = 0;
     private static int locationY = 0;
 
@@ -49,8 +50,9 @@ public class Level {
     private static int barricadeNummer = 0;
 
     public static void generate(int win) {
+        // Current level opslaan voor het reseten en opnieuw tekenen. 
         currentlevel = win;
-        Poppetje.poppetje.setIcon(Poppetje.player);
+        // Kijken welke lavel hij moet genereren.
         if (win == 0) {
             layout = level1;
             Barricade.reset();
@@ -83,7 +85,7 @@ public class Level {
             locationX = 0;
             locationY = 0;
         }
-
+        // Blokken die op die lokatie aanwezig moeten zijn plaatsen en indien nodig ook een pincode erbij zetten.
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
                 if (layout[x][y] == 0) {
@@ -595,7 +597,7 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
+                        code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
