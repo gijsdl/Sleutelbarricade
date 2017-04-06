@@ -40,14 +40,14 @@ public class Level {
 
         
 
-<<<<<<< HEAD
+
         generate(0);
        //level.add(background);
         
-=======
-        generate();
+
+        generate(0);
         level.add(background);
-        level.add(menu);
+        
         level.setLayout(null);
         level.setVisible(true);
         for (int x = 0; x < layout.length; x++) {
@@ -57,7 +57,7 @@ public class Level {
             }
             System.out.println("");
         }
->>>>>>> master
+
     }
     private static int locationX = 0;
     private static int locationY = 0;
