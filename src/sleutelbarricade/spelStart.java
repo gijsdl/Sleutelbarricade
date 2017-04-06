@@ -29,47 +29,48 @@ public class spelStart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bRegels = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        bRegels = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setText("Nieuw Spel");
+        jButton2.setPreferredSize(new java.awt.Dimension(128, 64));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
 
         bRegels.setText("Regels");
+        bRegels.setMaximumSize(new java.awt.Dimension(64, 64));
+        bRegels.setMinimumSize(new java.awt.Dimension(64, 64));
+        bRegels.setPreferredSize(new java.awt.Dimension(128, 64));
         bRegels.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRegelsActionPerformed(evt);
             }
         });
+        getContentPane().add(bRegels, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, -1, -1));
 
-        jButton2.setText("jButton2");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(bRegels)
-                .addGap(97, 97, 97)
-                .addComponent(jButton2)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(227, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bRegels)
-                    .addComponent(jButton2))
-                .addGap(50, 50, 50))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sleutelbarricade/pics/unknown.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegelsActionPerformed
-        JOptionPane.showMessageDialog(null ,"Hier komen de regels");
+        JOptionPane.showMessageDialog(null ,"Probeer de eindtegel te bereiken door de juiste sleutels op te pakken.");
+        JOptionPane.showMessageDialog(null ,"De speler kan maar 1 sleutel tegelijk vasthouden, en alleen de sleutel met de juiste waarde opent een barricade.");
+        JOptionPane.showMessageDialog(null ,"Sleutel kwijt? Dan moet je opnieuw beginnen!");
     }//GEN-LAST:event_bRegelsActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,5 +110,6 @@ public class spelStart extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bRegels;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
