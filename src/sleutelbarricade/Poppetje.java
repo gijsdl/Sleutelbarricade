@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Poppetje extends JFrame implements KeyListener {
-    //Objectne voor plaatjes
+    //Objecten voor plaatjes
 
     private BufferedImage background;
     private BufferedImage gast;
@@ -28,10 +28,10 @@ public class Poppetje extends JFrame implements KeyListener {
     private int oldCordX = 0;
     private int oldCordY = 0;
     private int sleutel = 0;
-    private ImageIcon player = new ImageIcon("pics/poppetje.png");
-    private ImageIcon player1 = new ImageIcon("pics/poppetje1.png");
-    private ImageIcon player2 = new ImageIcon("pics/poppetje2.png");
-    private ImageIcon player3 = new ImageIcon("pics/poppetje3.png");
+    private ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
+    private ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
+    private ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
+    private ImageIcon player3 = new ImageIcon("pics/poppetje3.png"); //Het plaatje waarop het poppetje naar links kijkt.
     private JLabel poppetje = new JLabel();
     int win = 0;
 
