@@ -10,6 +10,7 @@ package sleutelbarricade;
  * @author Gijs
  */
 public class Sleutel_tegel extends Tegel {
+
     private static int locationX;
     private static int locationY;
 
@@ -40,11 +41,18 @@ public class Sleutel_tegel extends Tegel {
 
     }
 
-     public static void reset() {
+    public static void reset() {
         int[][] reset = new int[5][4];
 
-
- 
         sleutelBase = reset;
     }
+
+    public static void sleutelcheck(int x, int y) {
+        for (int j = 0; j < 5; j++) {
+            if (sleutelBase[j][1] == x && sleutelBase[j][2] == y) {
+                
+            }
+        }
+    }
+
 }
