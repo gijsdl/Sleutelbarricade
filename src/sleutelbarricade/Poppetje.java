@@ -24,6 +24,8 @@ public class Poppetje extends JFrame implements KeyListener {
     //start coördinaten poppetje
     private int cordX = 0;
     private int cordY = 0;
+    private int oldCordX = 0;
+    private int oldCordY = 0; 
     private ImageIcon player = new ImageIcon("pics/poppetje.png");
     private JLabel poppetje = new JLabel();
 
@@ -46,7 +48,13 @@ public class Poppetje extends JFrame implements KeyListener {
        if (check == true){
            poppetje.setIcon(player);
         poppetje.setBounds(x * 64, y * 64, 64, 64);
+        oldCordX = x;
+        oldCordY = y;
         add(poppetje);
+        
+       }else{
+           cordX = oldCordX;
+           cordY = oldCordY;
        }
         
     }
