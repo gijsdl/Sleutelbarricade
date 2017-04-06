@@ -94,8 +94,8 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                }
-                if (layout[x][y] == 1) {
+                    
+                } else if (layout[x][y] == 1) {
                     ImageIcon pic = new ImageIcon("pics/muur.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
@@ -113,7 +113,7 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Barricade.store();
@@ -137,7 +137,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -154,7 +154,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -171,7 +171,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -188,7 +188,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -206,7 +206,7 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Barricade.store();
@@ -224,7 +224,7 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Barricade.store();
@@ -242,7 +242,7 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Barricade.store();
@@ -260,12 +260,18 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
                     Barricade.store();
                     barricadeNummer++;
 
+                } else if (layout[x][y] == 12) {
+                    ImageIcon pic = new ImageIcon("pics/kasteel.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
                 }
                 locationY = locationY + 64;
             }
@@ -294,10 +300,6 @@ public class Level {
         level.repaint();
     }
 
-    void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private static class ClickListener implements ActionListener {
 
         @Override
@@ -308,20 +310,20 @@ public class Level {
         }
 
     }
-        private static class ClickListener2 implements ActionListener {
+
+    private static class ClickListener2 implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             generate(currentlevel);
             Poppetje.cordX = 0;
             Poppetje.cordY = 0;
-            
-            
+
         }
 
     }
     private static int[][] level1 = {
-        {0, 1, 8, 0, 0, 0, 0, 2, 2, 2},
+        {12, 1, 8, 0, 0, 0, 0, 2, 2, 2},
         {0, 0, 0, 0, 4, 6, 0, 2, 2, 2},
         {0, 0, 8, 0, 0, 0, 0, 10, 10, 4},
         {0, 1, 8, 0, 0, 0, 0, 2, 2, 2},
@@ -334,7 +336,7 @@ public class Level {
     };
 
     private static int[][] level2 = {
-        {0, 1, 1, 1, 0, 0, 5, 1, 1, 6},
+        {12, 1, 1, 1, 0, 0, 5, 1, 1, 6},
         {0, 1, 1, 1, 0, 0, 1, 1, 1, 0},
         {0, 0, 0, 1, 0, 10, 1, 0, 0, 0},
         {0, 0, 0, 8, 0, 0, 1, 0, 0, 0},
@@ -347,7 +349,7 @@ public class Level {
     };
 
     private static int[][] level3 = {
-        {0, 0, 4, 1, 1, 1, 0, 0, 0, 0},
+        {12, 0, 4, 1, 1, 1, 0, 0, 0, 0},
         {0, 0, 0, 1, 5, 1, 9, 1, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
         {0, 0, 0, 1, 1, 1, 1, 1, 0, 0},
@@ -367,6 +369,14 @@ public class Level {
             check = true;
         } else if (layout[x][y] == 1) {
             check = false;
+        } else if (layout[x][y] == 2) {
+            if (sleutel == 0) {
+                JOptionPane.showMessageDialog(level, "U heeft geen sleutel");
+
+            } else {
+                JOptionPane.showMessageDialog(level, "Deze sleutel past niet.");
+            }
+            check = false;
         } else if (layout[x][y] == 3) {
             check = true;
         } else if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
@@ -384,14 +394,16 @@ public class Level {
                 redraw(win);
 
             } else {
-                if (sleutel == 0){
-                JOptionPane.showMessageDialog(level, "U heeft geen sleutel");
-                
-                }else {
-                    JOptionPane.showMessageDialog(level, "Deze sluetel past niet.");
+                if (sleutel == 0) {
+                    JOptionPane.showMessageDialog(level, "U heeft geen sleutel");
+
+                } else {
+                    JOptionPane.showMessageDialog(level, "Deze sleutel past niet.");
                 }
                 check = false;
             }
+        } else if (layout[x][y] == 12) {
+            check = true;
         }
 
         return check;
@@ -401,7 +413,7 @@ public class Level {
     private static int sleutelNummerRD;
 
     public static void redraw(int win) {
-        
+
         if (win == 0) {
             layout = level1;
 
@@ -459,7 +471,7 @@ public class Level {
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                    code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                     level.add(code);
                     level.add(block);
 
@@ -485,7 +497,7 @@ public class Level {
                         Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -505,7 +517,7 @@ public class Level {
                         Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -524,7 +536,7 @@ public class Level {
                         Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -543,7 +555,7 @@ public class Level {
                         Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -563,7 +575,7 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -583,7 +595,7 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 25 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -603,7 +615,7 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
                     }
@@ -623,13 +635,21 @@ public class Level {
                         Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummerRD);
                         JLabel code = new JLabel();
                         code.setText(String.valueOf(pincode));
-                        code.setBounds(locationX, locationY, 64, 64);
+                        code.setBounds(locationX + 20 , locationY + 40, 30, 20);
                         level.add(code);
                         level.add(block);
+
                     }
                     barricadeNummerRD++;
 
+                } else if (layout[x][y] == 12) {
+                    ImageIcon pic = new ImageIcon("pics/kasteel.png");
+                    JLabel block = new JLabel();
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
                 }
+
                 locationY = locationY + 64;
             }
             locationX = locationX + 64;
