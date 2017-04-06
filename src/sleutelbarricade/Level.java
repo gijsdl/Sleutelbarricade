@@ -321,7 +321,7 @@ public class Level {
 
    public static boolean check(int x, int y){
        boolean check = false;
-       if (x > 10 || y > 10 || x < 0 || y < 0 ){
+       if (x > 9 || y > 9 || x < 0 || y < 0 ){
            check = false;
        }
        else if (layout[x][y] == 0){
