@@ -5,6 +5,7 @@
  */
 package sleutelbarricade;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,7 +44,7 @@ public class spelStart extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 448, -1, -1));
 
         bRegels.setText("Regels");
         bRegels.setMaximumSize(new java.awt.Dimension(64, 64));
@@ -54,7 +55,7 @@ public class spelStart extends javax.swing.JFrame {
                 bRegelsActionPerformed(evt);
             }
         });
-        getContentPane().add(bRegels, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, -1, -1));
+        getContentPane().add(bRegels, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 448, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sleutelbarricade/pics/unknown.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -69,7 +70,9 @@ public class spelStart extends javax.swing.JFrame {
     }//GEN-LAST:event_bRegelsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String[] args = null;
+        Level.main(args);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -112,4 +115,8 @@ public class spelStart extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
+    private void Level() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
