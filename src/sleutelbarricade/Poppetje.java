@@ -34,7 +34,7 @@ public class Poppetje extends JFrame implements KeyListener {
     public static int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
-    private int sleutel;
+    public int sleutel;
     public static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
     private static ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
     private static ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
@@ -89,6 +89,7 @@ public class Poppetje extends JFrame implements KeyListener {
             if (win == 3) {
                 poppetje.setBounds(cordX, cordY, 64, 64);
                 dispose();
+                sleutel = 0;
                 oldCordX = 0;
                 oldCordY = 0;
                 cordX = 0;
@@ -100,6 +101,7 @@ public class Poppetje extends JFrame implements KeyListener {
                win = 0;
             } else {
                 Level.generate(win);
+                sleutel = 0;
                 oldCordX = 0;
                 oldCordY = 0;
                 cordX = 0;
