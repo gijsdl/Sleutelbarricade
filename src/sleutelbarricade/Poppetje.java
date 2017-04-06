@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +14,7 @@ package sleutelbarricade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +26,7 @@ public class Poppetje extends JFrame implements KeyListener {
     private BufferedImage background;
     private BufferedImage gast;
     //start coördinaten poppetje
+    private UUID uuid;
     private int cordX = 0;
     private int cordY = 0;
     private int oldCordX = 0;
@@ -36,28 +40,30 @@ public class Poppetje extends JFrame implements KeyListener {
     int win = 0;
 
     public Poppetje() {
-        create();
-
-    }
-    public Poppetje(int sleutel1){
-        this.sleutel = sleutel1;
-        System.out.println(sleutel);
-        
-    }
-
-    public void create() {
-        
+        this.uuid = UUID.randomUUID();
         poppetje.setIcon(player1);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
         setFocusable(true);
         addKeyListener(this);
+        PoppetjeHandler.getPoppetjes().add(this);
+    }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setSleutel(int sleutel) {
+        this.sleutel = sleutel;
+    }
+
+    public int getSleutel() {
+        return sleutel;
     }
 
     public void bewegen(int x, int y) {
         System.out.println(sleutel);
-        boolean check = Level.check(x, y, sleutel);
+        boolean check = Level.check(x, y, getUuid(), sleutel);
         System.out.println(x + " " + y);
         if (check == true) {
             poppetje.setIcon(player);
@@ -148,3 +154,4 @@ public class Poppetje extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent ke) {
     }
 }
+
