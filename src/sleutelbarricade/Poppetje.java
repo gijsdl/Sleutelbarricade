@@ -28,6 +28,9 @@ public class Poppetje extends JFrame implements KeyListener {
     private int oldCordX = 0;
     private int oldCordY = 0; 
     private ImageIcon player = new ImageIcon("pics/poppetje.png");
+    private ImageIcon player1 = new ImageIcon("pics/poppetje1.png");
+    private ImageIcon player2 = new ImageIcon("pics/poppetje2.png");
+    private ImageIcon player3 = new ImageIcon("pics/poppetje3.png");
     private JLabel poppetje = new JLabel();
 
     public Poppetje() {
@@ -75,6 +78,7 @@ public class Poppetje extends JFrame implements KeyListener {
                 cordX += 1;
                 
                 bewegen(cordX, cordY);
+                poppetje.setIcon(player1);
                 
             }
             break;
@@ -82,18 +86,21 @@ public class Poppetje extends JFrame implements KeyListener {
             case KeyEvent.VK_LEFT: {
                 cordX -= 1;
                 bewegen(cordX, cordY);
+                poppetje.setIcon(player3);
             }
             break;
             //een tegel (64 pixels) omlaag met het pijltje omlaag
             case KeyEvent.VK_DOWN: {
                 cordY += 1;
                 bewegen(cordX, cordY);
+                poppetje.setIcon(player);
             }
             break;
             //een tegel (64 pixels) omhoog met het pijltje omhoog
             case KeyEvent.VK_UP: {
                 cordY -= 1;
                 bewegen(cordX, cordY);
+                poppetje.setIcon(player2);
             }
             break;
         }

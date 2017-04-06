@@ -44,7 +44,7 @@ public class Level {
         menu.addActionListener(listener);
 
         generate();
-       // level.add(background);
+       //level.add(background);
         level.add(menu);
         level.setLayout(null);
         level.setVisible(true);
