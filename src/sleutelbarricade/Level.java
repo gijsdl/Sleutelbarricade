@@ -33,14 +33,8 @@ public class Level {
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
         level.getContentPane().setBackground(new Color(65, 116, 14));
-        
-
-     
-        
-
 
         generate(0);
-       
 
     }
     private static int locationX = 0;
@@ -51,7 +45,6 @@ public class Level {
     private static int sleutelNummer = 0;
 
     private static int barricadeNummer = 0;
-    
 
     public static void generate(int win) {
         if (win == 0) {
@@ -65,16 +58,14 @@ public class Level {
             locationY = 0;
         } else if (win == 1) {
             layout = level2;
-            
+
             Barricade.reset();
             Sleutel_tegel.reset();
             level.getContentPane().removeAll();
             level.setVisible(false);
             locationX = 0;
             locationY = 0;
-            
-            
-            
+
             barricadeNummer = 0;
             sleutelNummer = 0;
             System.out.println("test");
@@ -89,15 +80,13 @@ public class Level {
             locationY = 0;
         }
 
-        
-
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
-                if (layout[x][y] == 0){
-                    
-                     ImageIcon pic = new ImageIcon("pics/niks.png");
+                if (layout[x][y] == 0) {
+
+                    ImageIcon pic = new ImageIcon("pics/niks.png");
                     JLabel block = new JLabel();
-                    
+
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
@@ -108,18 +97,15 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                    
-                    
-                    
 
                 } else if (layout[x][y] == 2) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-                    
+
                     int pincode = random.nextInt(3) + 1;
-                    pincode = pincode *25;
+                    pincode = pincode * 25;
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -136,8 +122,6 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
-                    
-                    
 
                 } else if (layout[x][y] == 4) {
                     ImageIcon pic = new ImageIcon("pics/sleutel.png");
@@ -150,7 +134,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                     code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX, locationY, 64, 64);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -167,7 +151,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                     code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX, locationY, 64, 64);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -184,7 +168,7 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                     code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX, locationY, 64, 64);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
@@ -201,20 +185,20 @@ public class Level {
                     Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
                     JLabel code = new JLabel();
                     code.setText(String.valueOf(pincode));
-                     code.setBounds(locationX, locationY, 64, 64);
+                    code.setBounds(locationX, locationY, 64, 64);
                     level.add(code);
                     level.add(block);
                     Sleutel_tegel.store();
                     sleutelNummer++;
 
-                }else if (layout[x][y] == 8) {
+                } else if (layout[x][y] == 8) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-                    
+
                     int pincode = 100;
-                    
+
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -225,14 +209,14 @@ public class Level {
                     Barricade.store();
                     barricadeNummer++;
 
-                }else if (layout[x][y] == 9) {
+                } else if (layout[x][y] == 9) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-                    
+
                     int pincode = 200;
-                    
+
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -243,14 +227,14 @@ public class Level {
                     Barricade.store();
                     barricadeNummer++;
 
-                }else if (layout[x][y] == 10) {
+                } else if (layout[x][y] == 10) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-                    
+
                     int pincode = 300;
-                    
+
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -261,14 +245,14 @@ public class Level {
                     Barricade.store();
                     barricadeNummer++;
 
-                }else if (layout[x][y] == 11) {
+                } else if (layout[x][y] == 11) {
                     ImageIcon pic = new ImageIcon("pics/slot.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-                    
+
                     int pincode = 400;
-                    
+
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -285,20 +269,19 @@ public class Level {
             locationX = locationX + 64;
             locationY = 0;
         }
-         JButton menu = new JButton("menu");
+        JButton menu = new JButton("menu");
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
         ActionListener listener = new Level.ClickListener();
         menu.addActionListener(listener);
         restart.addActionListener(listener);
-        
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
-        background.setBounds(0,0, 640, 640);
+        background.setBounds(0, 0, 640, 640);
         level.add(background);
-        
+
         level.setLayout(null);
         level.add(menu);
         level.add(restart);
@@ -361,25 +344,39 @@ public class Level {
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
 
-   public static boolean check(int x, int y, int sleutel){
-       boolean check = false;
-       if (x > 9 || y > 9 || x < 0 || y < 0 ){
-           check = false;
-       }
-       else if (layout[x][y] == 0){
-           check = true;
-       }else if(layout[x][y] == 1 ){
-           check = false;
-       }else if(layout[x][y] == 3 ){
-           check = true;
-       }else if(layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7 ){
-           check = true;
-           Sleutel_tegel.sleutelcheck(x,y);
-           
-       }else if(layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10|| layout[x][y] == 11 ){
-           check = false;
-       }
-       return check;
-   }
+    public static boolean check(int x, int y, int sleutel) {
+        boolean check = false;
+        if (x > 9 || y > 9 || x < 0 || y < 0) {
+            check = false;
+        }
+        if (layout[x][y] == 0) {
+            check = true;
+        }
+        if (layout[x][y] == 1) {
+            check = false;
+        }
+        if (layout[x][y] == 3) {
+            check = true;
+        }
+        if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
+            check = true;
+
+            Sleutel_tegel.sleutelcheck(x, y);
+
+        }
+        if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
+
+            boolean open = Barricade.boxCheck(x, y, sleutel);
+            if (open == true){
+                System.out.println("open");
+                check = true;
+            }
+            else{
+                System.out.println("close");
+                check = false;
+            }
+        }
+        return check;
+    }
 
 }

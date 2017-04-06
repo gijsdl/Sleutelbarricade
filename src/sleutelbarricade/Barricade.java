@@ -45,6 +45,17 @@ public class Barricade extends Tegel {
         
     }
 
-    
+    public static boolean boxCheck(int x, int y , int sleutel){
+         boolean check = false;
+        for (int i = 0; i < 34; i++){
+            if (barricadeBase[i][0] == x && barricadeBase[i][1] == y && barricadeBase[i][2] == sleutel && barricadeBase[i][3] == 1||barricadeBase[i][0] == x && barricadeBase[i][1] == y && barricadeBase[i][3] == 0){
+                barricadeBase[i][3]=0;
+                check = true;
+                
+            }
+            
+        }
+        return check;
+    }
 
 }
