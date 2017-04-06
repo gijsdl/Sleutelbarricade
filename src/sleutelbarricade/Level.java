@@ -365,7 +365,7 @@ public class Level {
 
                         } else {
                             if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
-
+                                
                                 boolean open = Barricade.boxCheck(x, y, sleutel);
                                 if (open == true) {
                                     System.out.println("open");

@@ -48,12 +48,16 @@ public class Sleutel_tegel extends Tegel {
     }
 
     public static void sleutelcheck(int x, int y) {
-        for (int j = 0; j < 5; j++) {
-            if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 1) {
+        for (int j = 0; j < 5; j++) {if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 0){
+            System.out.println("al gepakt");
+                break;
+            }else if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 1) {
                 Poppetje poppetje = new Poppetje(sleutelBase[j][2]);
                 sleutelBase[j][3]= 0;
+                
                 break;
             }
+            
         }
     }
 
