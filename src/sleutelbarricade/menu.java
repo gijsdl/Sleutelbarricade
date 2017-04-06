@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,7 +22,7 @@ public class menu {
     private static JButton restart;
     private static JButton stop;
 
-    private static final int FRAME_WIDTH = 300;
+    private static final int FRAME_WIDTH = 216;
     private static final int FRAME_HIGHT = 400;
     public static JFrame menu = new JFrame();
 
@@ -29,6 +31,13 @@ public class menu {
         menu.setTitle("menu");
         
         menu.setVisible(true);
+        
+        JLabel background = new JLabel();
+        ImageIcon pic = new ImageIcon("pics/menubg.png");
+        background.setIcon(pic);
+        background.setBounds(0,0, 1023, 850);
+        
+        
 
         menu.setSize(FRAME_WIDTH, FRAME_HIGHT);
         restart = new JButton("reset");
@@ -36,12 +45,16 @@ public class menu {
         JPanel Panel = new JPanel();
         restart.setBounds(50, 50, 100, 100);
         stop.setBounds(50, 200, 100, 100);
-
+        
+        
         Panel.setLayout(null);
+        menu.add(background);
+        background.setVisible(true);
         Panel.add(restart);
         Panel.add(stop);
         menu.add(Panel);
-
+        
+        
         ActionListener listener = new menu.ClickListener();
         restart.addActionListener(listener);
         stop.addActionListener(listener);
