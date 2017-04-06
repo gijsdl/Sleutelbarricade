@@ -24,7 +24,7 @@ public class Level {
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
 
-    private static JFrame level = new Poppetje();
+    public static JFrame level = new Poppetje();
 
     public static void main(String[] args) {
 
@@ -321,9 +321,19 @@ public class Level {
 
    public static boolean check(int x, int y){
        boolean check = false;
-       if (layout[x][y] == 0){
+       if (x > 10 || y > 10 || x < 0 || y < 0 ){
+           check = false;
+       }
+       else if (layout[x][y] == 0){
            check = true;
        }else if(layout[x][y] == 1 ){
+           check = false;
+       }else if(layout[x][y] == 3 ){
+           check = true;
+       }else if(layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7 ){
+           check = true;
+           
+       }else if(layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10|| layout[x][y] == 11 ){
            check = false;
        }
        return check;
