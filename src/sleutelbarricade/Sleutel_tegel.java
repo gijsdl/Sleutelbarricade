@@ -63,5 +63,12 @@ public class Sleutel_tegel extends Tegel {
             
         }
     }
+    public static boolean placeCheack( int sleutelNummer){
+        boolean status = true;
+        if (sleutelBase[sleutelNummer][3]== 0){
+            status = false;
+        }
+        return status;
+    }
 
 }
