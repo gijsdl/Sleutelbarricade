@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +14,7 @@ package sleutelbarricade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,11 +26,12 @@ public class Poppetje extends JFrame implements KeyListener {
     
     private BufferedImage gast;
     //start coördinaten poppetje
+    private UUID uuid;
     private int cordX = 0;
     private int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
-    private int sleutel = 0;
+    private int sleutel;
     private ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
     private ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
     private ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
@@ -36,26 +40,30 @@ public class Poppetje extends JFrame implements KeyListener {
     int win = 0;
 
     public Poppetje() {
-        create();
-
-    }
-    public Poppetje(int sleutel){
-        this.sleutel = sleutel;
-        System.out.println(sleutel);
-    }
-
-    public void create() {
-        System.out.println("test");
+        this.uuid = UUID.randomUUID();
         poppetje.setIcon(player1);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
         setFocusable(true);
         addKeyListener(this);
+        PoppetjeHandler.getPoppetjes().add(this);
+    }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setSleutel(int sleutel) {
+        this.sleutel = sleutel;
+    }
+
+    public int getSleutel() {
+        return sleutel;
     }
 
     public void bewegen(int x, int y) {
-        boolean check = Level.check(x, y, sleutel);
+        System.out.println(sleutel);
+        boolean check = Level.check(x, y, getUuid(), sleutel);
         System.out.println(x + " " + y);
         if (check == true) {
             poppetje.setIcon(player);
@@ -146,3 +154,4 @@ public class Poppetje extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent ke) {
     }
 }
+
