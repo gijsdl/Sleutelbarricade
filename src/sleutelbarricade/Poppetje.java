@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class Poppetje extends JFrame implements KeyListener {
     //Objecten voor plaatjes
 
-    private BufferedImage background;
+    
     private BufferedImage gast;
     //start coördinaten poppetje
     private int cordX = 0;
