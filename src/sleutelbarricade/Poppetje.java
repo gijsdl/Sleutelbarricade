@@ -32,6 +32,7 @@ public class Poppetje extends JFrame implements KeyListener {
     private ImageIcon player2 = new ImageIcon("pics/poppetje2.png");
     private ImageIcon player3 = new ImageIcon("pics/poppetje3.png");
     private JLabel poppetje = new JLabel();
+    int win = 0;
 
     public Poppetje() {
         create();
@@ -65,6 +66,14 @@ public class Poppetje extends JFrame implements KeyListener {
        if ( x == 9 && y == 9){
            
            JOptionPane.showMessageDialog(this, "U heeft dit level gewonnen!");
+           win++;
+           Level.generate(win);
+           cordX = 0;
+           cordY = 0;
+          ImageIcon player = new ImageIcon("pics/poppetje.png");
+          poppetje.setIcon(player);
+          add(poppetje);
+           poppetje.setBounds(cordX, cordY, 64, 64);
        }
         
     }

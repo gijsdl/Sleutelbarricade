@@ -42,6 +42,7 @@ public class Barricade extends Tegel {
     public static void reset() {
         int[][] reset = new int[34][4];
         barricadeBase = reset;
+        
     }
 
     
