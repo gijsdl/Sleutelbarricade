@@ -32,7 +32,7 @@ public class Level {
         level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
-
+        level.getContentPane().setBackground(new Color(65, 116, 14));
         JLabel background = new JLabel();
         ImageIcon pic = new ImageIcon("pics/background.png");
         background.setIcon(pic);
@@ -44,7 +44,7 @@ public class Level {
         menu.addActionListener(listener);
 
         generate();
-       //level.add(background);
+        level.add(background);
         level.add(menu);
         level.setLayout(null);
         level.setVisible(true);
@@ -267,6 +267,10 @@ public class Level {
             locationY = 0;
         }
         
+    }
+
+    void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private static class ClickListener implements ActionListener {
