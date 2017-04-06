@@ -60,5 +60,12 @@ public class Barricade extends Tegel {
         }
         return check;
     }
+    public static boolean placeCheack( int barricadeNummer){
+        boolean status = true;
+        if (barricadeBase[barricadeNummer][3]== 0){
+            status = false;
+        }
+        return status;
+    }
 
 }
