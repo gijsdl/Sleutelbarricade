@@ -33,30 +33,14 @@ public class Level {
         level.setSize(FRAME_WIDTH, FRAME_HIGHT);
         level.setLayout(new BorderLayout());
         level.getContentPane().setBackground(new Color(65, 116, 14));
-        JLabel background = new JLabel();
-        ImageIcon pic = new ImageIcon("pics/background.png");
-        background.setIcon(pic);
-        background.setBounds(0,0, 640, 640);
+        
 
+     
         
 
 
         generate(0);
-       //level.add(background);
-        
-
-        generate(0);
-        level.add(background);
-        
-        level.setLayout(null);
-        level.setVisible(true);
-        for (int x = 0; x < layout.length; x++) {
-            for (int y = 0; y < layout.length; y++) {
-                System.out.printf("%8d", layout[y][x]);
-
-            }
-            System.out.println("");
-        }
+       
 
     }
     private static int locationX = 0;
@@ -76,6 +60,9 @@ public class Level {
             Sleutel_tegel.reset();
             barricadeNummer = 0;
             sleutelNummer = 0;
+            level.getContentPane().removeAll();
+            locationX = 0;
+            locationY = 0;
         } else if (win == 1) {
             layout = level2;
             
@@ -303,9 +290,16 @@ public class Level {
         ActionListener listener = new Level.ClickListener();
         menu.addActionListener(listener);
         
+        JLabel background = new JLabel();
+        ImageIcon pic = new ImageIcon("pics/background.png");
+        background.setIcon(pic);
+        background.setBounds(0,0, 640, 640);
+        level.add(background);
+        
         level.setLayout(null);
         level.add(menu);
         level.setVisible(true);
+        System.out.println("test2");
         level.repaint();
     }
 
