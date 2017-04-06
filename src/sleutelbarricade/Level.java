@@ -38,14 +38,16 @@ public class Level {
         background.setIcon(pic);
         background.setBounds(0,0, 640, 640);
 
-        JButton menu = new JButton("menu");
-        menu.setBounds(10, 650, 100, 30);
-        ActionListener listener = new Level.ClickListener();
-        menu.addActionListener(listener);
+        
 
-        generate();
+
+        generate(0);
+       //level.add(background);
+        
+
+        generate(0);
         level.add(background);
-        level.add(menu);
+        
         level.setLayout(null);
         level.setVisible(true);
         for (int x = 0; x < layout.length; x++) {
@@ -55,41 +57,71 @@ public class Level {
             }
             System.out.println("");
         }
+
     }
     private static int locationX = 0;
     private static int locationY = 0;
 
     private static int[][] layout;
     static Random random = new Random();
-    private static int win = 2;
     private static int sleutelNummer = 0;
 
     private static int barricadeNummer = 0;
     
 
-    public static void generate() {
+    public static void generate(int win) {
         if (win == 0) {
             layout = level1;
-        } else if (win == 1) {
-            layout = level2;
             Barricade.reset();
             Sleutel_tegel.reset();
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+        } else if (win == 1) {
+            layout = level2;
+            
+            Barricade.reset();
+            Sleutel_tegel.reset();
+            level.getContentPane().removeAll();
+            level.setVisible(false);
+            locationX = 0;
+            locationY = 0;
+            
+            
+            
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            System.out.println("test");
         } else if (win == 2) {
             layout = level3;
             Barricade.reset();
             Sleutel_tegel.reset();
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            level.getContentPane().removeAll();
+            locationX = 0;
+            locationY = 0;
         }
 
         
 
         for (int x = 0; x < layout.length; x++) {
             for (int y = 0; y < layout.length; y++) {
+                if (layout[x][y] == 0){
+                    
+                     ImageIcon pic = new ImageIcon("pics/niks.png");
+                    JLabel block = new JLabel();
+                    
+                    block.setIcon(pic);
+                    block.setBounds(locationX, locationY, 64, 64);
+                    level.add(block);
+                }
                 if (layout[x][y] == 1) {
                     ImageIcon pic = new ImageIcon("pics/muur.png");
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
+                    
                     
                     
 
@@ -266,7 +298,15 @@ public class Level {
             locationX = locationX + 64;
             locationY = 0;
         }
+         JButton menu = new JButton("menu");
+        menu.setBounds(10, 650, 100, 30);
+        ActionListener listener = new Level.ClickListener();
+        menu.addActionListener(listener);
         
+        level.setLayout(null);
+        level.add(menu);
+        level.setVisible(true);
+        level.repaint();
     }
 
     void setVisible(boolean b) {
@@ -338,7 +378,7 @@ public class Level {
            check = true;
            
        }else if(layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10|| layout[x][y] == 11 ){
-           check = false;
+           check = true;
        }
        return check;
    }
