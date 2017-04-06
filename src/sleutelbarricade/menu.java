@@ -22,9 +22,10 @@ public class menu {
 
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HIGHT = 400;
+    public static JFrame menu = new JFrame();
 
     public static void main(String[] args) {
-        JFrame menu = new JFrame();
+        
         menu.setTitle("menu");
         
         menu.setVisible(true);
@@ -60,7 +61,11 @@ public class menu {
                 System.out.println("restart");
             }
             if (e.getSource() == stop) {
-                System.out.println("stop");
+               Level.level.setVisible(false);
+               menu.setVisible(false);
+               spelStart s = new spelStart();
+               s.setVisible(true);
+                //System.out.println("stop");
             }
         }
 

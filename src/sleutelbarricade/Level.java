@@ -24,7 +24,7 @@ public class Level {
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
 
-    private static JFrame level = new Poppetje();
+    public static JFrame level = new Poppetje();
 
     public static void main(String[] args) {
 
