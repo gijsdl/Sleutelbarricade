@@ -5,11 +5,14 @@
  */
 package sleutelbarricade;
 
+import java.util.UUID;
+
 /**
  *
  * @author Gijs
  */
 public class Sleutel_tegel extends Tegel {
+
     private static int locationX;
     private static int locationY;
 
@@ -40,11 +43,32 @@ public class Sleutel_tegel extends Tegel {
 
     }
 
-     public static void reset() {
+    public static void reset() {
         int[][] reset = new int[5][4];
 
-
- 
         sleutelBase = reset;
     }
+
+    public static void sleutelcheck(int x, int y, UUID uuid) {
+        for (int j = 0; j < 5; j++) {if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 0){
+            System.out.println("al gepakt");
+                break;
+            }else if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 1) {
+                Poppetje poppetje = PoppetjeHandler.getPoppetje(uuid);
+                poppetje.setSleutel(sleutelBase[j][2]);
+                sleutelBase[j][3]= 0;
+                
+                break;
+            }
+            
+        }
+    }
+    public static boolean placeCheack( int sleutelNummer){
+        boolean status = true;
+        if (sleutelBase[sleutelNummer][3]== 0){
+            status = false;
+        }
+        return status;
+    }
+
 }
