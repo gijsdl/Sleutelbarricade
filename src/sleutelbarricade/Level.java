@@ -70,6 +70,10 @@ public class Level {
     public static void generate() {
         if (win == 0) {
             layout = level1;
+            barricadeNummer = 0;
+            sleutelNummer = 0;
+            Barricade.reset();
+            Sleutel_tegel.reset();
         } else if (win == 1) {
             layout = level2;
             Barricade.reset();
