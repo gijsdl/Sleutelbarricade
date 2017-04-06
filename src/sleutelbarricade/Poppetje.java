@@ -27,6 +27,7 @@ public class Poppetje extends JFrame implements KeyListener {
     private int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
+    private int sleutel = 0;
     private ImageIcon player = new ImageIcon("pics/poppetje.png");
     private ImageIcon player1 = new ImageIcon("pics/poppetje1.png");
     private ImageIcon player2 = new ImageIcon("pics/poppetje2.png");
@@ -50,7 +51,7 @@ public class Poppetje extends JFrame implements KeyListener {
     }
 
     public void bewegen(int x, int y) {
-        boolean check = Level.check(x, y);
+        boolean check = Level.check(x, y, sleutel);
         System.out.println(x + " " + y);
         if (check == true) {
             poppetje.setIcon(player);

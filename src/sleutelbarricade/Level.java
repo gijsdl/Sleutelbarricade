@@ -357,7 +357,7 @@ public class Level {
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
 
-   public static boolean check(int x, int y){
+   public static boolean check(int x, int y, int sleutel){
        boolean check = false;
        if (x > 9 || y > 9 || x < 0 || y < 0 ){
            check = false;
@@ -370,9 +370,10 @@ public class Level {
            check = true;
        }else if(layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7 ){
            check = true;
+           Sleutel_tegel.sleutelcheck(x,y);
            
        }else if(layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10|| layout[x][y] == 11 ){
-           check = true;
+           check = false;
        }
        return check;
    }
