@@ -298,9 +298,9 @@ public class Level {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-               Level.level.setVisible(false);
-               spelStart s = new spelStart();
-               s.setVisible(true);
+            Level.level.setVisible(false);
+            spelStart s = new spelStart();
+            s.setVisible(true);
         }
 
     }
@@ -348,32 +348,36 @@ public class Level {
         boolean check = false;
         if (x > 9 || y > 9 || x < 0 || y < 0) {
             check = false;
-        }
-        if (layout[x][y] == 0) {
-            check = true;
-        }
-        if (layout[x][y] == 1) {
-            check = false;
-        }
-        if (layout[x][y] == 3) {
-            check = true;
-        }
-        if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
-            check = true;
-
-            Sleutel_tegel.sleutelcheck(x, y);
-
-        }
-        if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
-
-            boolean open = Barricade.boxCheck(x, y, sleutel);
-            if (open == true){
-                System.out.println("open");
+        } else {
+            if (layout[x][y] == 0) {
                 check = true;
-            }
-            else{
-                System.out.println("close");
-                check = false;
+            } else {
+                if (layout[x][y] == 1) {
+                    check = false;
+                } else {
+                    if (layout[x][y] == 3) {
+                        check = true;
+                    } else {
+                        if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
+                            check = true;
+
+                            Sleutel_tegel.sleutelcheck(x, y);
+
+                        } else {
+                            if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
+
+                                boolean open = Barricade.boxCheck(x, y, sleutel);
+                                if (open == true) {
+                                    System.out.println("open");
+                                    check = true;
+                                } else {
+                                    System.out.println("close");
+                                    check = false;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         return check;
