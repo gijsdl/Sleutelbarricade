@@ -14,9 +14,6 @@ public class Sleutelbarricade {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        System.out.println("bannaan");
-        System.out.println("test");
-    }
+   
     
 }
