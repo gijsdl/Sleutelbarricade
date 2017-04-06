@@ -348,39 +348,30 @@ public class Level {
         boolean check = false;
         if (x > 9 || y > 9 || x < 0 || y < 0) {
             check = false;
-        } else {
-            if (layout[x][y] == 0) {
+        } else if (layout[x][y] == 0) {
+            check = true;
+        } else if (layout[x][y] == 1) {
+            check = false;
+        } else if (layout[x][y] == 3) {
+            check = true;
+        } else if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
+            check = true;
+
+            Sleutel_tegel.sleutelcheck(x, y);
+
+        } else if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
+            System.out.println(x + " " + y + " " + sleutel + " " +  "test");
+            boolean open = Barricade.boxCheck(x, y, sleutel);
+            if (open == true) {
+                System.out.println("open");
                 check = true;
             } else {
-                if (layout[x][y] == 1) {
-                    check = false;
-                } else {
-                    if (layout[x][y] == 3) {
-                        check = true;
-                    } else {
-                        if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
-                            check = true;
-
-                            Sleutel_tegel.sleutelcheck(x, y);
-
-                        } else {
-                            if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
-                                
-                                boolean open = Barricade.boxCheck(x, y, sleutel);
-                                if (open == true) {
-                                    System.out.println("open");
-                                    check = true;
-                                } else {
-                                    System.out.println("close");
-                                    check = false;
-                                }
-                            }
-                        }
-                    }
-                }
+                System.out.println("close");
+                check = false;
             }
         }
-        return check;
-    }
 
+        return check;
+
+    }
 }
