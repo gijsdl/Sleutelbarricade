@@ -42,9 +42,13 @@ public class Poppetje extends JFrame implements KeyListener {
     }
 
     public void bewegen(int x, int y) {
-        poppetje.setIcon(player);
+       boolean check = Level.check(x , y);
+       if (check == true){
+           poppetje.setIcon(player);
         poppetje.setBounds(x * 64, y * 64, 64, 64);
         add(poppetje);
+       }
+        
     }
 
     //While a key is pressed
@@ -52,6 +56,7 @@ public class Poppetje extends JFrame implements KeyListener {
         switch (ke.getKeyCode()) {
             //een tegel (64 pixels) naar rechts met pijltje naar rechts
             case KeyEvent.VK_RIGHT: {
+                
                 cordX += 1;
                 bewegen(cordX, cordY);
             }
