@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sleutelbarricade;
 
 import javax.swing.JOptionPane;
@@ -40,7 +36,7 @@ public class spelStart extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 448, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
 
         bRegels.setText("Regels");
         bRegels.setMaximumSize(new java.awt.Dimension(64, 64));
@@ -51,9 +47,9 @@ public class spelStart extends javax.swing.JFrame {
                 bRegelsActionPerformed(evt);
             }
         });
-        getContentPane().add(bRegels, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 448, -1, -1));
+        getContentPane().add(bRegels, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sleutelbarricade/pics/unknown.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gijs\\Documents\\NetBeansProjects\\Sleutelbarricade\\pics\\menu.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

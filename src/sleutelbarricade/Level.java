@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sleutelbarricade;
 
 import java.awt.BorderLayout;
@@ -68,7 +64,7 @@ public class Level {
             Barricade.reset();
             Sleutel_tegel.reset();
             level.getContentPane().removeAll();
-            level.setVisible(false);
+            
             locationX = 0;
             locationY = 0;
 
@@ -275,11 +271,13 @@ public class Level {
                     block.setBounds(locationX, locationY, 64, 64);
                     level.add(block);
                 }
+                
                 locationY = locationY + 64;
             }
             locationX = locationX + 64;
             locationY = 0;
         }
+        //De rest van het JFrame toevoegen.
         JButton menu = new JButton("menu");
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
@@ -301,22 +299,24 @@ public class Level {
 
         level.repaint();
     }
-
+//Void voor het luisteren van de stop button.
     private static class ClickListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            // Spel sluiten en menu opstarten.
             Level.level.setVisible(false);
             spelStart s = new spelStart();
             s.setVisible(true);
         }
 
     }
-
+//Void voor het luisteren van de reset button.
     private static class ClickListener2 implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            // het reseten van het level en coördinaten van poppetje.
             generate(currentlevel);
             Poppetje.cordX = 0;
             Poppetje.cordY = 0;
@@ -324,6 +324,22 @@ public class Level {
         }
 
     }
+    //Level 1 ,2 en 3 initialiseren.
+    //0 = tegel
+    //1 = muur
+    //2 = neppe barricade
+    //3 = eind tegel
+    //4 = sleutel 100
+    //5 = sleutel 200
+    //6 = sleutel 300
+    //7 = sleutel 400
+    //8 = barricade 100
+    //9 = barricade 200
+    //10 = barricade 300
+    //11 = barricade 400
+    //12 = start kasteel
+    //Note X en Y worden omgedraait. Dus de rij naar links gaat naar beneden.
+    
     private static int[][] level1 = {
         {12, 1, 8, 0, 0, 0, 0, 2, 2, 2},
         {0, 0, 0, 0, 4, 6, 0, 2, 2, 2},
@@ -362,16 +378,19 @@ public class Level {
         {1, 1, 0, 0, 0, 2, 2, 1, 0, 0},
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
-
+//Het checken of het poppetje naar de plek toe kan lopen waar hij naar toe wil.
     public static boolean check(int x, int y, UUID uuid, int sleutel, int win) {
         boolean check = false;
+        // Zorgen dat het poppetje niet uit het veld loopt.
         if (x > 9 || y > 9 || x < 0 || y < 0) {
             check = false;
+            //Kijken met de rest van de blokken.
         } else if (layout[x][y] == 0) {
             check = true;
         } else if (layout[x][y] == 1) {
             check = false;
         } else if (layout[x][y] == 2) {
+            //Kijken of het poppetje een sleutel heeft. Deze barricade is voor de sier dus is de uitkomst altijd false.
             if (sleutel == 0) {
                 JOptionPane.showMessageDialog(level, "U heeft geen sleutel");
 
@@ -381,14 +400,15 @@ public class Level {
             check = false;
         } else if (layout[x][y] == 3) {
             check = true;
+            
         } else if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
             check = true;
-
+            // kijken bij Sleutel_tegel of hij een sleutel krijgt.
             Sleutel_tegel.sleutelcheck(x, y, uuid);
             redraw(win);
 
         } else if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
-
+            //kijken bij Barricade of het poppetje de juist sleutel heeft om de barricade te openen.
             boolean open = Barricade.boxCheck(x, y, sleutel);
             if (open == true) {
 
@@ -396,6 +416,7 @@ public class Level {
                 redraw(win);
 
             } else {
+                //Kijken of het poppetje een sleutel heeft.
                 if (sleutel == 0) {
                     JOptionPane.showMessageDialog(level, "U heeft geen sleutel");
 
@@ -413,7 +434,7 @@ public class Level {
     }
     private static int barricadeNummerRD;
     private static int sleutelNummerRD;
-
+// het opnieuw tekenen van het JFrame om de opgehaalde sleutel en geöpende barricade weg te halen.
     public static void redraw(int win) {
 
         if (win == 0) {
@@ -428,7 +449,7 @@ public class Level {
             layout = level2;
 
             level.getContentPane().removeAll();
-            level.setVisible(false);
+            
             locationX = 0;
             locationY = 0;
 
@@ -487,6 +508,7 @@ public class Level {
                     level.add(block);
 
                 } else if (layout[x][y] == 4) {
+                    //kijken bij Sleutel_tegel of het plaatje nog afgedukt moet worden.
                     boolean place = Sleutel_tegel.placeCheack(sleutelNummerRD);
                     if (place == true) {
                         ImageIcon pic = new ImageIcon("pics/sleutel.png");
@@ -564,6 +586,7 @@ public class Level {
                     sleutelNummerRD++;
 
                 } else if (layout[x][y] == 8) {
+                    //Kijken bij Barricade of dit plaatje nog afgedrukt moet worden.
                     boolean place = Barricade.placeCheack(barricadeNummerRD);
                     if (place == true) {
                         ImageIcon pic = new ImageIcon("pics/slot.png");

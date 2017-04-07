@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sleutelbarricade;
 
 /**
@@ -19,7 +15,7 @@ public class Barricade extends Tegel {
     private static int status;
     private static int barricadeNummer;
 
-    //constructor en value geven.
+    //constructor een value geven.
     public Barricade(int locationX, int locationY, int pincode, int status, int barricadeNummer) {
         super(locationX, locationY);
         this.locationX = locationX;

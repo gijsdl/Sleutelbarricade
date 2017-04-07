@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
+ * @author Crhis Bruijn, Ruben Buijck, Gijs de Lange
  */
 package sleutelbarricade;
 
@@ -9,7 +8,7 @@ package sleutelbarricade;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
+// deze class is er voor om te zorgen dat niet iedere keer als poppetje een nieuwe sleutel krijgt een nieuw object word aangemaakt.
 public class PoppetjeHandler {
 
 	private static Set<Poppetje> poppetjes = new HashSet<>(); //Er wordt hier een HashSet gebruikt inplaats van een HashMap omdat er geen volgorde nodig is

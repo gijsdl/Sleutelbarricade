@@ -1,15 +1,9 @@
 
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sleutelbarricade;
 
 /**
  *
- * @author Ruben
+ * @author Crhis Bruijn, Ruben Buijck, Gijs de Lange
  */
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -25,10 +19,9 @@ import static sleutelbarricade.Poppetje.cordY;
 
 
 public class Poppetje extends JFrame implements KeyListener {
-    //Objecten voor plaatjes
-
-    private BufferedImage gast;
-    //start coördinaten poppetje
+    
+    
+    //initialiseren van de benodigde variabelen.
     private UUID uuid;
     public static int cordX = 0;
     public static int cordY = 0;
@@ -43,7 +36,7 @@ public class Poppetje extends JFrame implements KeyListener {
     int win = 0;
 
         
-
+// het plaatje van poppetje plaatsen op het JFrame.
     public Poppetje() {
         this.uuid = UUID.randomUUID();
         poppetje.setIcon(player1);
@@ -53,7 +46,7 @@ public class Poppetje extends JFrame implements KeyListener {
         addKeyListener(this);
         PoppetjeHandler.getPoppetjes().add(this);
     }
-
+//zorgen dat poppetje een nieuwe sleutel kan krijgen zonder een niew opject aan te maken.
     public UUID getUuid() {
         return uuid;
     }
@@ -65,9 +58,9 @@ public class Poppetje extends JFrame implements KeyListener {
     public int getSleutel() {
         return sleutel;
     }
-
+// zorgen dat het poppetje kan bewegen ever het veld.
     public void bewegen(int x, int y) {
-       
+       // kijken bij Level of hij daarheen mag bewegen.
         boolean check = Level.check(x, y, getUuid(), sleutel, win);
         
         if (check == true) {
@@ -79,13 +72,16 @@ public class Poppetje extends JFrame implements KeyListener {
             add(poppetje);
 
         } else {
+            //als hij niet naar het nieuwe coördinaat toe kan worden de coördinaten weer het oude.
             cordX = oldCordX;
             cordY = oldCordY;
         }
+        //als hij op het laatste veld is melden dat hij gewonnen heeft.
         if (x == 9 && y == 9) {
 
             JOptionPane.showMessageDialog(this, "U heeft dit level gewonnen!");
             win++;
+            // na 3 keer winnen word er verteld dat hij het spel gewonnen heeft en word de speler terug gebracht bij het menu en worden alle waardens hersteld.
             if (win == 3) {
                 poppetje.setBounds(cordX, cordY, 64, 64);
                 dispose();
@@ -115,10 +111,10 @@ public class Poppetje extends JFrame implements KeyListener {
 
     }
 
-    //While a key is pressed
+    // het kijken of er iemand op de pijltjes toetsen drukt.
     public void keyPressed(KeyEvent ke) {
         switch (ke.getKeyCode()) {
-            //een tegel (64 pixels) naar rechts met pijltje naar rechts
+            //een tegel naar rechts met pijltje naar rechts
             case KeyEvent.VK_RIGHT: {
 
                 cordX += 1;
@@ -128,21 +124,23 @@ public class Poppetje extends JFrame implements KeyListener {
 
             }
             break;
-            //een tegel (64 pixels) naar links met pijltje naar links
+            //een tegel naar links met pijltje naar links
             case KeyEvent.VK_LEFT: {
                 cordX -= 1;
+                // het nieuwe coördinaat versturen.
                 bewegen(cordX, cordY);
+                // poppetje naar de nieuwe laten wijzen.
                 poppetje.setIcon(player3);
             }
             break;
-            //een tegel (64 pixels) omlaag met het pijltje omlaag
+            //een tegel omlaag met het pijltje omlaag
             case KeyEvent.VK_DOWN: {
                 cordY += 1;
                 bewegen(cordX, cordY);
                 poppetje.setIcon(player);
             }
             break;
-            //een tegel (64 pixels) omhoog met het pijltje omhoog
+            //een tegel omhoog met het pijltje omhoog
             case KeyEvent.VK_UP: {
                 cordY -= 1;
                 bewegen(cordX, cordY);
