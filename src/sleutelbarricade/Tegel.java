@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sleutelbarricade;
 
 /**
  *
- * @author Gijs
+ * @author Crhis Bruijn, Ruben Buijck, Gijs de Lange
  */
+
+//superclass van Sleutel_tegel en Barricade.
 public class Tegel {
     private int locationX;
     private int locationY;
