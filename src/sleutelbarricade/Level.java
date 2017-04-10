@@ -108,8 +108,9 @@ public class Level {
                     JLabel block = new JLabel();
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
-
-                    int pincode = 50;
+                    Random rand = new Random();
+                    int random = rand.nextInt(3) + 1;
+                    int pincode =  random * 25;
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();
@@ -503,7 +504,7 @@ public class Level {
                     block.setIcon(pic);
                     block.setBounds(locationX, locationY, 64, 64);
 
-                    int pincode = 50;
+                    int pincode = Barricade.barricadePincode(barricadeNummerRD);
                     int status = 1;
                     Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
                     JLabel code = new JLabel();

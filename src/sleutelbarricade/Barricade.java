@@ -61,6 +61,10 @@ public class Barricade extends Tegel {
         }
         return check;
     }
+    
+    public static int barricadePincode( int barricadeNummer){
+        return barricadeBase[barricadeNummer][2];
+    }
 // kijken voor de status en daarmee of hij opnieuw gegenereerd moet worden.
 
     public static boolean placeCheack(int barricadeNummer) {

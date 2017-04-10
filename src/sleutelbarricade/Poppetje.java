@@ -82,23 +82,20 @@ public class Poppetje extends JFrame implements KeyListener {
             if (win == 3) {
                 poppetje.setBounds(cordX, cordY, 64, 64);
                 dispose();
-                sleutel = 0;
-                oldCordX = 0;
-                oldCordY = 0;
-                cordX = 0;
-                cordY = 0;
+                
 
                 spelStart s = new spelStart();
                 s.setVisible(true);
 
                 win = 0;
             } else {
-                Level.generate(win);
                 sleutel = 0;
                 oldCordX = 0;
                 oldCordY = 0;
                 cordX = 0;
                 cordY = 0;
+                Level.generate(win);
+                
 
                 poppetje.setIcon(player);
                 add(poppetje);
