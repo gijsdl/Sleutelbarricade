@@ -38,6 +38,11 @@ public class Poppetje extends JFrame implements KeyListener {
         
 // het plaatje van poppetje plaatsen op het JFrame.
     public Poppetje() {
+        cordX = 0;
+        cordY = 0;
+        oldCordX = 0;
+        oldCordY = 0;
+        
         this.uuid = UUID.randomUUID();
         poppetje.setIcon(player1);
         poppetje.setBounds(0, 0, 64, 64);
