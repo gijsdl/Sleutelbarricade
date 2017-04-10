@@ -11,8 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import static sleutelbarricade.Poppetje.cordX;
-import static sleutelbarricade.Poppetje.cordY;
 
 /**
  *
@@ -287,6 +285,14 @@ public class Level {
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
+        JLabel sleutel = new JLabel();
+        if(Poppetje.sleutel == 0){
+           sleutel.setText("U heeft geen sleutel");
+        }else{
+         sleutel.setText("sleutel code " + String.valueOf(Poppetje.sleutel));
+        }
+        
+        sleutel.setBounds(400, 650, 200, 30);
         ActionListener listener = new Level.ClickListener();
         ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
@@ -298,6 +304,7 @@ public class Level {
         level.add(background);
 
         level.setLayout(null);
+        level.add(sleutel);
         level.add(menu);
         level.add(restart);
         level.setVisible(true);
@@ -322,10 +329,11 @@ public class Level {
         @Override
         public void actionPerformed(ActionEvent e) {
             // het reseten van het level en coördinaten van poppetje.
-            generate(currentlevel);
-            Poppetje.cordX = 0;
+           Poppetje.cordX = 0;
             Poppetje.cordY = 0;
             Poppetje.sleutel = 0;
+            generate(currentlevel);
+            
 
         }
 
@@ -690,6 +698,14 @@ public class Level {
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
+        JLabel sleutel = new JLabel();
+        if(Poppetje.sleutel == 0){
+           sleutel.setText("U heeft geen sleutel");
+        }else{
+         sleutel.setText("sleutel code " + String.valueOf(Poppetje.sleutel));
+        }
+        
+        sleutel.setBounds(400, 650, 200, 30);
         ActionListener listener = new Level.ClickListener();
         ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
@@ -701,6 +717,7 @@ public class Level {
         level.add(background);
 
         level.setLayout(null);
+        level.add(sleutel);
         level.add(menu);
         level.add(restart);
         level.setVisible(true);
