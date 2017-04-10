@@ -1,4 +1,3 @@
-
 package sleutelbarricade;
 
 /**
@@ -7,7 +6,6 @@ package sleutelbarricade;
  */
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,18 +14,14 @@ import javax.swing.JOptionPane;
 import static sleutelbarricade.Poppetje.cordX;
 import static sleutelbarricade.Poppetje.cordY;
 
-
-
 public class Poppetje extends JFrame implements KeyListener {
-    
-    
+
     //initialiseren van de benodigde variabelen.
-    private UUID uuid;
     public static int cordX = 0;
     public static int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
-    public int sleutel;
+    public static int sleutel;
     public static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
     private static ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
     private static ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
@@ -35,26 +29,23 @@ public class Poppetje extends JFrame implements KeyListener {
     public static JLabel poppetje = new JLabel();
     int win = 0;
 
-        
 // het plaatje van poppetje plaatsen op het JFrame.
     public Poppetje() {
         cordX = 0;
         cordY = 0;
         oldCordX = 0;
         oldCordY = 0;
-        
-        this.uuid = UUID.randomUUID();
+
         poppetje.setIcon(player1);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
         setFocusable(true);
         addKeyListener(this);
-        PoppetjeHandler.getPoppetjes().add(this);
+
     }
 //zorgen dat poppetje een nieuwe sleutel kan krijgen zonder een niew opject aan te maken.
-    public UUID getUuid() {
-        return uuid;
-    }
+
+    
 
     public void setSleutel(int sleutel) {
         this.sleutel = sleutel;
@@ -64,10 +55,11 @@ public class Poppetje extends JFrame implements KeyListener {
         return sleutel;
     }
 // zorgen dat het poppetje kan bewegen ever het veld.
+
     public void bewegen(int x, int y) {
-       // kijken bij Level of hij daarheen mag bewegen.
-        boolean check = Level.check(x, y, getUuid(), sleutel, win);
-        
+        // kijken bij Level of hij daarheen mag bewegen.
+        boolean check = Level.check(x, y,  sleutel, win);
+
         if (check == true) {
             poppetje.setIcon(player);
             poppetje.setBounds(x * 64, y * 64, 64, 64);
@@ -96,10 +88,10 @@ public class Poppetje extends JFrame implements KeyListener {
                 cordX = 0;
                 cordY = 0;
 
-                 spelStart s = new spelStart();
-               s.setVisible(true);
-               
-               win = 0;
+                spelStart s = new spelStart();
+                s.setVisible(true);
+
+                win = 0;
             } else {
                 Level.generate(win);
                 sleutel = 0;
@@ -164,4 +156,3 @@ public class Poppetje extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent ke) {
     }
 }
-
