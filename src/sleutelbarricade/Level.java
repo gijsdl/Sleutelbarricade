@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static sleutelbarricade.Poppetje.cordX;
+import static sleutelbarricade.Poppetje.cordY;
 
 /**
  *
@@ -33,6 +35,9 @@ public class Level {
         level.getContentPane().setBackground(new Color(65, 116, 14));
 // generate starten
         generate(0);
+        
+        cordX = 0;
+        cordY = 0;
 
     }
     //Intialiseren van de waarden die nodig zijn.
