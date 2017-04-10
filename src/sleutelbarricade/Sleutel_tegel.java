@@ -62,6 +62,7 @@ public class Sleutel_tegel extends Tegel {
 
         }
     }
+    
 
     // kijken voor de status en daarmee of hij opnieuw gegenereerd moet worden.
     public static boolean placeCheack(int sleutelNummer) {
