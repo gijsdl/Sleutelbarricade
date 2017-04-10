@@ -6,14 +6,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import static sleutelbarricade.Poppetje.cordX;
-import static sleutelbarricade.Poppetje.cordY;
 
 /**
  *
@@ -36,8 +33,9 @@ public class Level {
 // generate starten
         generate(0);
         
-        cordX = 0;
-        cordY = 0;
+        Poppetje.cordX = 0;
+        Poppetje.cordY = 0;
+        Poppetje.sleutel = 0;
 
     }
     //Intialiseren van de waarden die nodig zijn.
@@ -287,6 +285,14 @@ public class Level {
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
+        JLabel sleutel = new JLabel();
+        if(Poppetje.sleutel == 0){
+           sleutel.setText("U heeft geen sleutel");
+        }else{
+         sleutel.setText("sleutel code " + String.valueOf(Poppetje.sleutel));
+        }
+        
+        sleutel.setBounds(400, 650, 200, 30);
         ActionListener listener = new Level.ClickListener();
         ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
@@ -298,6 +304,7 @@ public class Level {
         level.add(background);
 
         level.setLayout(null);
+        level.add(sleutel);
         level.add(menu);
         level.add(restart);
         level.setVisible(true);
@@ -322,9 +329,11 @@ public class Level {
         @Override
         public void actionPerformed(ActionEvent e) {
             // het reseten van het level en coördinaten van poppetje.
-            generate(currentlevel);
-            Poppetje.cordX = 0;
+           Poppetje.cordX = 0;
             Poppetje.cordY = 0;
+            Poppetje.sleutel = 0;
+            generate(currentlevel);
+            
 
         }
 
@@ -384,7 +393,7 @@ public class Level {
         {1, 7, 0, 0, 0, 0, 0, 1, 0, 3}
     };
 //Het checken of het poppetje naar de plek toe kan lopen waar hij naar toe wil.
-    public static boolean check(int x, int y, UUID uuid, int sleutel, int win) {
+    public static boolean check(int x, int y, int sleutel, int win) {
         boolean check = false;
         // Zorgen dat het poppetje niet uit het veld loopt.
         if (x > 9 || y > 9 || x < 0 || y < 0) {
@@ -409,7 +418,7 @@ public class Level {
         } else if (layout[x][y] == 4 || layout[x][y] == 5 || layout[x][y] == 6 || layout[x][y] == 7) {
             check = true;
             // kijken bij Sleutel_tegel of hij een sleutel krijgt.
-            Sleutel_tegel.sleutelcheck(x, y, uuid);
+            Sleutel_tegel.sleutelcheck(x, y);
             redraw(win);
 
         } else if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
@@ -689,6 +698,14 @@ public class Level {
         menu.setBounds(10, 650, 100, 30);
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
+        JLabel sleutel = new JLabel();
+        if(Poppetje.sleutel == 0){
+           sleutel.setText("U heeft geen sleutel");
+        }else{
+         sleutel.setText("sleutel code " + String.valueOf(Poppetje.sleutel));
+        }
+        
+        sleutel.setBounds(400, 650, 200, 30);
         ActionListener listener = new Level.ClickListener();
         ActionListener listener2 = new Level.ClickListener2();
         menu.addActionListener(listener);
@@ -700,6 +717,7 @@ public class Level {
         level.add(background);
 
         level.setLayout(null);
+        level.add(sleutel);
         level.add(menu);
         level.add(restart);
         level.setVisible(true);
