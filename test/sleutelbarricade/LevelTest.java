@@ -58,7 +58,7 @@ public class LevelTest {
         System.out.println("generate");
         int win = 1;
         Level.generate(win);
-        assertArrayEquals(layout == level2,);
+        assertArrayEquals(layout == level2);
         
     }
 
