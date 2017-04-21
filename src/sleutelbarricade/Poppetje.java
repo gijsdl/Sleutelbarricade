@@ -36,7 +36,7 @@ public class Poppetje extends JFrame implements KeyListener {
         oldCordX = 0;
         oldCordY = 0;
 
-        poppetje.setIcon(player1);
+        poppetje.setIcon(player);
         poppetje.setBounds(0, 0, 64, 64);
         add(poppetje);
         setFocusable(true);
@@ -96,10 +96,6 @@ public class Poppetje extends JFrame implements KeyListener {
                 cordY = 0;
                 Level.generate(win);
                 
-
-                poppetje.setIcon(player);
-                add(poppetje);
-                poppetje.setBounds(cordX, cordY, 64, 64);
             }
         }
 
