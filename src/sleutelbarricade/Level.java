@@ -41,19 +41,19 @@ public class Level {
 //start icon tekenen.
 
     public static void generateTegelStart() {
-        ImageIcon pic = new ImageIcon("pics/kasteel.png");
+        
         JLabel block = new JLabel();
-        block.setIcon(pic);
+        block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/kasteel.png")));
         block.setBounds(locationX, locationY, 64, 64);
         level.add(block);
     }
 //lege tegel tekenen.
 
     public static void generateTegel() {
-        ImageIcon pic = new ImageIcon("pics/niks.png");
+        
         JLabel block = new JLabel();
 
-        block.setIcon(pic);
+        block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/niks.png")));
         block.setBounds(locationX, locationY, 64, 64);
         level.add(block);
 
@@ -61,18 +61,18 @@ public class Level {
 //muur tekenen.
 
     public static void generateMuur() {
-        ImageIcon pic = new ImageIcon("pics/muur.png");
+        
         JLabel block = new JLabel();
-        block.setIcon(pic);
+        block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/muur.png")));
         block.setBounds(locationX, locationY, 64, 64);
         level.add(block);
     }
 //eintegel tekenen.
 
     public static void generateTegelEind() {
-        ImageIcon pic = new ImageIcon("pics/eind.png");
+        
         JLabel block = new JLabel();
-        block.setIcon(pic);
+        block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/eind.png")));
         block.setBounds(locationX, locationY, 64, 64);
         level.add(block);
     }
@@ -80,9 +80,9 @@ public class Level {
 
     public static void generateBarricade(int pincode, int x, int y, int status) {
         if (status == 1) {
-            ImageIcon pic = new ImageIcon("pics/slot.png");
+            
             JLabel block = new JLabel();
-            block.setIcon(pic);
+            block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/slot.png")));
             block.setBounds(locationX, locationY, 64, 64);
 
             Barricade barricade = new Barricade(x, y, pincode, status, barricadeNummer);
@@ -98,9 +98,9 @@ public class Level {
 
     public static void generateSleutel(int pincode, int x, int y, int status) {
         if (status == 1) {
-            ImageIcon pic = new ImageIcon("pics/sleutel.png");
+            
             JLabel block = new JLabel();
-            block.setIcon(pic);
+            block.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/sleutel.png")));
             block.setBounds(locationX, locationY, 64, 64);
             level.add(block);
             Sleutel_tegel block1 = new Sleutel_tegel(x, y, pincode, status, sleutelNummer);
@@ -133,8 +133,8 @@ public class Level {
         menu.addActionListener(listener);
         restart.addActionListener(listener2);
         JLabel background = new JLabel();
-        ImageIcon pic = new ImageIcon("pics/background.png");
-        background.setIcon(pic);
+        
+        background.setIcon(new javax.swing.ImageIcon(Level.class.getResource("/sleutelbarricade/pics/background.png")));
         background.setBounds(0, 0, 640, 640);
         level.add(background);
 
