@@ -6,28 +6,26 @@ package sleutelbarricade;
  */
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import static sleutelbarricade.Poppetje.cordX;
-import static sleutelbarricade.Poppetje.cordY;
+
 
 public class Poppetje extends JFrame implements KeyListener {
 
     //initialiseren van de benodigde variabelen.
-    public static int cordX = 0;
-    public static int cordY = 0;
+    private static int cordX = 0;
+    private static int cordY = 0;
     private int oldCordX = 0;
     private int oldCordY = 0;
-    public static int sleutel;
-    public static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
+    private static int sleutel;
+    private static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
     private static ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
     private static ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
     private static ImageIcon player3 = new ImageIcon("pics/poppetje3.png"); //Het plaatje waarop het poppetje naar links kijkt.
-    public static JLabel poppetje = new JLabel();
-    int win = 0;
+    private static JLabel poppetje = new JLabel();
+    private static int win = 0;
 
 // het plaatje van poppetje plaatsen op het JFrame.
     public Poppetje() {
@@ -43,17 +41,32 @@ public class Poppetje extends JFrame implements KeyListener {
         addKeyListener(this);
 
     }
-//zorgen dat poppetje een nieuwe sleutel kan krijgen zonder een niew opject aan te maken.
+//getters en setters
 
-    
-
-    public void setSleutel(int sleutel) {
-        this.sleutel = sleutel;
+    public static void setSleutel(int sleutel) {
+        Poppetje.sleutel = sleutel;
     }
 
-    public int getSleutel() {
+    public static int getSleutel() {
         return sleutel;
     }
+
+    public static int getCordX() {
+        return cordX;
+    }
+
+    public static void setCordX(int cordX) {
+        Poppetje.cordX = cordX;
+    }
+
+    public static int getCordY() {
+        return cordY;
+    }
+
+    public static void setCordY(int cordY) {
+        Poppetje.cordY = cordY;
+    }
+    
 // zorgen dat het poppetje kan bewegen ever het veld.
 
     public void bewegen(int x, int y) {
