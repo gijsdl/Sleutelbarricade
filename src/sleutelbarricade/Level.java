@@ -21,7 +21,7 @@ public class Level {
     private static final int FRAME_WIDTH = 656;
     private static final int FRAME_HIGHT = 730;
 
-    public static JFrame level = new Poppetje();
+    private static JFrame level = new Poppetje();
 
     public static void main(String[] args) {
 //De rest van de waarden voor level instellen.
@@ -33,15 +33,15 @@ public class Level {
 // generate starten
         generate(0);
 
-        Poppetje.cordX = 0;
-        Poppetje.cordY = 0;
-        Poppetje.sleutel = 0;
+        Poppetje.setCordX(0);
+        Poppetje.setCordY(0);
+        Poppetje.setSleutel(0);
 
     }
 //start icon tekenen.
 
     public static void generateStart() {
-        ImageIcon pic = new ImageIcon("pics/niks.png");
+        ImageIcon pic = new ImageIcon("pics/kasteel.png");
         JLabel block = new JLabel();
         block.setIcon(pic);
         block.setBounds(locationX, locationY, 64, 64);
@@ -121,10 +121,10 @@ public class Level {
         JButton restart = new JButton("reset");
         restart.setBounds(120, 650, 100, 30);
         JLabel sleutel = new JLabel();
-        if (Poppetje.sleutel == 0) {
+        if (Poppetje.getSleutel() == 0) {
             sleutel.setText("U heeft geen sleutel");
         } else {
-            sleutel.setText("Uw sleutel is " + String.valueOf(Poppetje.sleutel));
+            sleutel.setText("Uw sleutel is " + String.valueOf(Poppetje.getSleutel()));
         }
 
         sleutel.setBounds(400, 650, 200, 30);
@@ -154,7 +154,7 @@ public class Level {
     private static int[][] layout;
     static Random random = new Random();
     private static int sleutelNummer = 0;
-    public static int currentlevel = 0;
+    private static int currentlevel = 0;
     private static int barricadeNummer = 0;
 
     public static void generate(int win) {
@@ -416,9 +416,9 @@ public class Level {
         @Override
         public void actionPerformed(ActionEvent e) {
             // het reseten van het level en coördinaten van poppetje.
-            Poppetje.cordX = 0;
-            Poppetje.cordY = 0;
-            Poppetje.sleutel = 0;
+            Poppetje.setCordX(0);
+            Poppetje.setCordY(0);
+            Poppetje.setSleutel(0);
             generate(currentlevel);
 
         }

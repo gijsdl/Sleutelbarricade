@@ -17,7 +17,7 @@ public class Barricade extends Tegel {
 
     //constructor een value geven.
     public Barricade(int locationX, int locationY, int pincode, int status, int barricadeNummer) {
-        super(locationX, locationY);
+        super(locationX, locationY, pincode, status);
         this.locationX = locationX;
         this.locationY = locationY;
 

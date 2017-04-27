@@ -1,6 +1,6 @@
 package sleutelbarricade;
 
-import java.util.UUID;
+
 
 /**
  *
@@ -18,7 +18,7 @@ public class Sleutel_tegel extends Tegel {
     //constructor een value geven.
 
     public Sleutel_tegel(int locationX, int locationY, int pincode, int status, int sleutelNummer) {
-        super(locationX, locationY);
+        super(locationX, locationY, pincode, status);
         this.locationX = locationX;
         this.locationY = locationY;
 
@@ -54,7 +54,7 @@ public class Sleutel_tegel extends Tegel {
 
                 break;
             } else if (sleutelBase[j][0] == x && sleutelBase[j][1] == y && sleutelBase[j][3] == 1) {
-                Poppetje.sleutel = sleutelBase[j][2];
+                Poppetje.setSleutel(sleutelBase[j][2]);
                 sleutelBase[j][3] = 0;
 
                 break;
