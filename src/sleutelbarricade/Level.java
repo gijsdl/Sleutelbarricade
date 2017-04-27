@@ -31,7 +31,7 @@ public class Level {
         level.setLayout(new BorderLayout());
         level.getContentPane().setBackground(new Color(65, 116, 14));
 // generate starten
-        generate(0);
+        generateLevel(0);
 
         Poppetje.setCordX(0);
         Poppetje.setCordY(0);
@@ -40,7 +40,7 @@ public class Level {
     }
 //start icon tekenen.
 
-    public static void generateStart() {
+    public static void generateTegelStart() {
         ImageIcon pic = new ImageIcon("pics/kasteel.png");
         JLabel block = new JLabel();
         block.setIcon(pic);
@@ -69,7 +69,7 @@ public class Level {
     }
 //eintegel tekenen.
 
-    public static void generateEind() {
+    public static void generateTegelEind() {
         ImageIcon pic = new ImageIcon("pics/eind.png");
         JLabel block = new JLabel();
         block.setIcon(pic);
@@ -150,14 +150,13 @@ public class Level {
     //Intialiseren van de waarden die nodig zijn.
     private static int locationX = 0;
     private static int locationY = 0;
-
     private static int[][] layout;
     static Random random = new Random();
     private static int sleutelNummer = 0;
     private static int currentlevel = 0;
     private static int barricadeNummer = 0;
 
-    public static void generate(int win) {
+    public static void generateLevel(int win) {
         // Current level opslaan voor het reseten en opnieuw tekenen. 
         currentlevel = win;
 
@@ -198,7 +197,7 @@ public class Level {
                     Barricade.store();
 
                 } else if (layout[x][y] == 3) {
-                    generateEind();
+                    generateTegelEind();
 
                 } else if (layout[x][y] == 4) {
                     int pincode = 100;
@@ -249,7 +248,7 @@ public class Level {
                     Barricade.store();
 
                 } else if (layout[x][y] == 12) {
-                    generateStart();
+                    generateTegelStart();
                 }
 
                 locationY = locationY + 64;
@@ -292,14 +291,14 @@ public class Level {
                     generateBarricade(pincode, x, y, status);
 
                 } else if (layout[x][y] == 3) {
-                    generateEind();
+                    generateTegelEind();
 
                 } else if (layout[x][y] == 4) {
 
                     int pincode = 100;
                     int status;
                     //kijken bij Sleutel_tegel of het plaatje nog afgedukt moet worden.
-                    boolean place = Sleutel_tegel.placeCheack(sleutelNummer);
+                    boolean place = Sleutel_tegel.statusCheack(sleutelNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -310,7 +309,7 @@ public class Level {
                 } else if (layout[x][y] == 5) {
                     int pincode = 200;
                     int status;
-                    boolean place = Sleutel_tegel.placeCheack(sleutelNummer);
+                    boolean place = Sleutel_tegel.statusCheack(sleutelNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -321,7 +320,7 @@ public class Level {
                 } else if (layout[x][y] == 6) {
                     int pincode = 300;
                     int status;
-                    boolean place = Sleutel_tegel.placeCheack(sleutelNummer);
+                    boolean place = Sleutel_tegel.statusCheack(sleutelNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -332,7 +331,7 @@ public class Level {
                 } else if (layout[x][y] == 7) {
                     int pincode = 400;
                     int status;
-                    boolean place = Sleutel_tegel.placeCheack(sleutelNummer);
+                    boolean place = Sleutel_tegel.statusCheack(sleutelNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -344,7 +343,7 @@ public class Level {
                     int pincode = 100;
                     int status;
                     //Kijken bij Barricade of dit plaatje nog afgedrukt moet worden.
-                    boolean place = Barricade.placeCheack(barricadeNummer);
+                    boolean place = Barricade.statusCheack(barricadeNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -355,7 +354,7 @@ public class Level {
                 } else if (layout[x][y] == 9) {
                     int pincode = 200;
                     int status;
-                    boolean place = Barricade.placeCheack(barricadeNummer);
+                    boolean place = Barricade.statusCheack(barricadeNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -366,7 +365,7 @@ public class Level {
                 } else if (layout[x][y] == 10) {
                     int pincode = 300;
                     int status;
-                    boolean place = Barricade.placeCheack(barricadeNummer);
+                    boolean place = Barricade.statusCheack(barricadeNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -377,7 +376,7 @@ public class Level {
                 } else if (layout[x][y] == 11) {
                     int pincode = 400;
                     int status;
-                    boolean place = Barricade.placeCheack(barricadeNummer);
+                    boolean place = Barricade.statusCheack(barricadeNummer);
                     if (place == true) {
                         status = 1;
                     } else {
@@ -386,7 +385,7 @@ public class Level {
                     generateBarricade(pincode, x, y, status);
 
                 } else if (layout[x][y] == 12) {
-                    generateStart();
+                    generateTegelStart();
                 }
 
                 locationY = locationY + 64;
@@ -419,7 +418,7 @@ public class Level {
             Poppetje.setCordX(0);
             Poppetje.setCordY(0);
             Poppetje.setSleutel(0);
-            generate(currentlevel);
+            generateLevel(currentlevel);
 
         }
 
@@ -480,7 +479,7 @@ public class Level {
     };
 //Het checken of het poppetje naar de plek toe kan lopen waar hij naar toe wil.
 
-    public static boolean check(int x, int y, int sleutel, int win) {
+    public static boolean checkMovement(int x, int y, int sleutel, int win) {
         boolean check = false;
         // Zorgen dat het poppetje niet uit het veld loopt.
         if (x > 9 || y > 9 || x < 0 || y < 0) {
@@ -510,7 +509,7 @@ public class Level {
 
         } else if (layout[x][y] == 8 || layout[x][y] == 9 || layout[x][y] == 10 || layout[x][y] == 11) {
             //kijken bij Barricade of het poppetje de juist sleutel heeft om de barricade te openen.
-            boolean open = Barricade.boxCheck(x, y, sleutel);
+            boolean open = Barricade.barricadeCheck(x, y, sleutel);
             if (open == true) {
 
                 check = true;

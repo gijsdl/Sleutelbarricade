@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-
 public class Poppetje extends JFrame implements KeyListener {
 
     //initialiseren van de benodigde variabelen.
@@ -66,12 +65,11 @@ public class Poppetje extends JFrame implements KeyListener {
     public static void setCordY(int cordY) {
         Poppetje.cordY = cordY;
     }
-    
-// zorgen dat het poppetje kan bewegen ever het veld.
 
+// zorgen dat het poppetje kan bewegen ever het veld.
     public void bewegen(int x, int y) {
         // kijken bij Level of hij daarheen mag bewegen.
-        boolean check = Level.check(x, y,  sleutel, win);
+        boolean check = Level.checkMovement(x, y, sleutel, win);
 
         if (check == true) {
             poppetje.setIcon(player);
@@ -88,28 +86,35 @@ public class Poppetje extends JFrame implements KeyListener {
         }
         //als hij op het laatste veld is melden dat hij gewonnen heeft.
         if (x == 9 && y == 9) {
+            win();
 
+        }
+
+    }
+
+    public void win() {
+
+        
+        win++;
+        // na 3 keer winnen word er verteld dat hij het spel gewonnen heeft en word de speler terug gebracht bij het menu en worden alle waardens hersteld.
+        if (win == 3) {
+            JOptionPane.showMessageDialog(this, "U heeft dit spel gewonnen!");
+            
+            dispose();
+
+            spelStart s = new spelStart();
+            s.setVisible(true);
+
+            win = 0;
+        } else {
             JOptionPane.showMessageDialog(this, "U heeft dit level gewonnen!");
-            win++;
-            // na 3 keer winnen word er verteld dat hij het spel gewonnen heeft en word de speler terug gebracht bij het menu en worden alle waardens hersteld.
-            if (win == 3) {
-                poppetje.setBounds(cordX, cordY, 64, 64);
-                dispose();
-                
+            sleutel = 0;
+            oldCordX = 0;
+            oldCordY = 0;
+            cordX = 0;
+            cordY = 0;
+            Level.generateLevel(win);
 
-                spelStart s = new spelStart();
-                s.setVisible(true);
-
-                win = 0;
-            } else {
-                sleutel = 0;
-                oldCordX = 0;
-                oldCordY = 0;
-                cordX = 0;
-                cordY = 0;
-                Level.generate(win);
-                
-            }
         }
 
     }

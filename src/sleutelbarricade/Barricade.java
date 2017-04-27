@@ -46,7 +46,7 @@ public class Barricade extends Tegel {
     }
 // kijken of het poppetje hier heen kan lopen.
 
-    public static boolean boxCheck(int x, int y, int sleutel) {
+    public static boolean barricadeCheck(int x, int y, int sleutel) {
         boolean check = false;
         for (int i = 0; i < 34; i++) {
             // kijken of de locatie en de sleutel die de speler heeft met elkaar kloppen.
@@ -61,13 +61,13 @@ public class Barricade extends Tegel {
         }
         return check;
     }
-    
+    // voor de random barricades de pincode geven.
     public static int barricadePincode( int barricadeNummer){
         return barricadeBase[barricadeNummer][2];
     }
 // kijken voor de status en daarmee of hij opnieuw gegenereerd moet worden.
 
-    public static boolean placeCheack(int barricadeNummer) {
+    public static boolean statusCheack(int barricadeNummer) {
         boolean status = true;
         if (barricadeBase[barricadeNummer][3] == 0) {
             status = false;
