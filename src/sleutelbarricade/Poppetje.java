@@ -19,10 +19,10 @@ public class Poppetje extends JFrame implements KeyListener {
     private int oldCordX = 0;
     private int oldCordY = 0;
     private static int sleutel;
-    private static ImageIcon player = new ImageIcon("pics/poppetje.png"); //Het plaatje waarop het poppetje naar beneden kijkt.
-    private static ImageIcon player1 = new ImageIcon("pics/poppetje1.png"); //Het plaatje waarop het poppetje naar rechts kijkt.
-    private static ImageIcon player2 = new ImageIcon("pics/poppetje2.png"); //Het plaatje waarop het poppetje naar boven kijkt.
-    private static ImageIcon player3 = new ImageIcon("pics/poppetje3.png"); //Het plaatje waarop het poppetje naar links kijkt.
+    private static ImageIcon player = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje.png")); //Het plaatje waarop het poppetje naar beneden kijkt.
+    private static ImageIcon player1 = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje1.png")); //Het plaatje waarop het poppetje naar rechts kijkt.
+    private static ImageIcon player2 = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje2.png")); //Het plaatje waarop het poppetje naar boven kijkt.
+    private static ImageIcon player3 = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje3.png")); //Het plaatje waarop het poppetje naar links kijkt.
     private static JLabel poppetje = new JLabel();
     private static int win = 0;
 
