@@ -416,6 +416,8 @@ public class Level {
             // het reseten van het level en coördinaten van poppetje.
             Poppetje.setCordX(0);
             Poppetje.setCordY(0);
+            Poppetje.setOldCordX(0);
+            Poppetje.setOldCordY(0);
             Poppetje.setSleutel(0);
             generateLevel(currentlevel);
 

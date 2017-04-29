@@ -16,8 +16,8 @@ public class Poppetje extends JFrame implements KeyListener {
     //initialiseren van de benodigde variabelen.
     private static int cordX = 0;
     private static int cordY = 0;
-    private int oldCordX = 0;
-    private int oldCordY = 0;
+    private static int oldCordX = 0;
+    private static int oldCordY = 0;
     private static int sleutel;
     private static ImageIcon player = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje.png")); //Het plaatje waarop het poppetje naar beneden kijkt.
     private static ImageIcon player1 = new javax.swing.ImageIcon(Poppetje.class.getResource("/sleutelbarricade/pics/poppetje1.png")); //Het plaatje waarop het poppetje naar rechts kijkt.
@@ -66,6 +66,15 @@ public class Poppetje extends JFrame implements KeyListener {
         Poppetje.cordY = cordY;
     }
 
+    public static void setOldCordX(int oldCordX) {
+        Poppetje.oldCordX = oldCordX;
+    }
+
+    public static void setOldCordY(int oldCordY) {
+        Poppetje.oldCordY = oldCordY;
+    }
+
+   
 // zorgen dat het poppetje kan bewegen ever het veld.
     public void bewegen(int x, int y) {
         // kijken bij Level of hij daarheen mag bewegen.
